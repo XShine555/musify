@@ -9,11 +9,10 @@
         style="@style/MusifyHeaderText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login"
+        android:text="@string/log_in_musify"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:padding="24dp"
-        />
+        android:padding="24dp" />
 
     <LinearLayout
         android:id="@+id/loginLayout"
@@ -80,9 +79,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="@string/login"
-            style="@style/MusifyPrimaryButton"
-            />
+            android:text="@string/log_in"
+            style="@style/MusifyPrimaryButton" />
 
     </LinearLayout>
 

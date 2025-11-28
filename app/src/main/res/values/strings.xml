@@ -7,9 +7,12 @@
     <string name="username">Usuario</string>
     <string name="password">Contraseña</string>
 
-    <string name="log_in">Inicia sesión</string>
-    <string name="login">Iniciar sesión</string>
+    <string name="log_in">Iniciar sesión</string>
+    <string name="log_in_musify">Inicia sesión en Musify</string>
 
+    <string name="sign_up">Registrarse</string>
+    <string name="sign_up_in_musify">Regístrate en Musify</string>
+
+    <string name="you_already_have_account">¿Ya tienes una cuenta?</string>
     <string name="you_dont_have_account">¿No tienes cuenta?</string>
-    <string name="sign_up">Regístrate</string>
 </resources>
