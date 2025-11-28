@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.musify.databinding.FragmentLibraryBinding
+import com.musify.model.Playlist
+import com.musify.ui.create_playlist_modal.CreatePlaylistModalFragment
+import com.musify.ui.create_playlist_modal.OnPlaylistCreatedListener
 
 class LibraryFragment : Fragment() {
 
@@ -56,6 +59,18 @@ class LibraryFragment : Fragment() {
             ) {
             }
         })
+
+        val addPlaylistButton = binding.addPlaylistButton
+        addPlaylistButton.setOnClickListener {
+            val playlistModal = CreatePlaylistModalFragment()
+            playlistModal.show(parentFragmentManager, "CreatePlaylistModal")
+
+            playlistModal.listener = object: OnPlaylistCreatedListener {
+                override fun onPlaylistCreated(playlistName: String) {
+                    viewModel.addPlaylist(Playlist(-1, playlistName, "User", ""))
+                }
+            }
+        }
 
         return binding.root
     }

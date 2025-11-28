@@ -24,7 +24,7 @@
             android:scaleType="centerCrop"
             android:contentDescription="@string/item_playlist_content_descriptor"
             android:background="@drawable/round_outline"
-            app:srcCompat="@drawable/ic_dashboard_black_24dp" />
+            app:srcCompat="@drawable/playlist_placeholder" />
 
         <LinearLayout
             android:layout_width="wrap_content"

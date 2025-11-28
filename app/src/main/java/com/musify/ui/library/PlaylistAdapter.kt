@@ -28,8 +28,8 @@ class PlaylistAdapter(
             Glide.with(itemView.context)
                 .load(item.imageUrl)
                 .centerCrop()
-                .placeholder(R.drawable.round_outline)
-                .transform(RoundedCorners(20))
+                .placeholder(R.drawable.playlist_placeholder)
+                .transform(RoundedCorners(16))
                 .into(image)
 
             itemView.setOnClickListener {

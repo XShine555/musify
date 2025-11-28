@@ -12,5 +12,6 @@
         <item name="colorOnSurface">@color/on_surface</item>
         <item name="android:textColorHint">@color/hint</item>
         <item name="fontFamily">@font/poppins</item>
+        <item name="bottomSheetDialogTheme">@style/MusifyBottomSheetDialog</item>
     </style>
 </resources>

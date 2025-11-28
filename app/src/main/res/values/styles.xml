@@ -3,15 +3,17 @@
     <style name="MusifyEditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxBackgroundMode">filled</item>
         <item name="boxBackgroundColor">@color/primary</item>
-        <item name="boxStrokeColor">@color/secondary</item>
+        <item name="boxStrokeColor">@color/on_primary</item>
         <item name="android:background">@drawable/corner_radius_8dp</item>
         <item name="android:textColor">@color/on_primary</item>
         <item name="android:backgroundTint">@color/primary</item>
+        <item name="android:drawableTint">@color/hint</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
         <item name="android:textColorHint">@color/hint</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="MusifyPrimaryButton" parent="Widget.MaterialComponents.Button">
@@ -48,20 +50,40 @@
         <item name="android:textSize">32sp</item>
         <item name="android:textColor">@color/on_surface</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="MusifyBodyText">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/on_surface</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="MusifySubtleText">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/hint</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="MusifyHintText">
         <item name="android:textColor">@color/hint</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="MusifyBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/MusifyBottomSheet</item>
+    </style>
+
+    <style name="MusifyBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/MusifyAppearanceBottomSheetDialog</item>
+    </style>
+
+    <style name="MusifyAppearanceBottomSheetDialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 </resources>

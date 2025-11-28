@@ -20,4 +20,6 @@
     <string name="search">Buscar</string>
 
     <string name="item_playlist_content_descriptor">Imagen de la lista de reproducción</string>
+    <string name="set_name_to_playlist">Nombre de la playlist</string>
+    <string name="create">Crear</string>
 </resources>
