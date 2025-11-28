@@ -3,4 +3,13 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="username">Usuario</string>
+    <string name="password">Contraseña</string>
+
+    <string name="log_in">Inicia sesión</string>
+    <string name="login">Iniciar sesión</string>
+
+    <string name="you_dont_have_account">¿No tienes cuenta?</string>
+    <string name="sign_up">Regístrate</string>
 </resources>
