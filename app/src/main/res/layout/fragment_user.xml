@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.user.UserFragment"
+    tools:padding="@dimen/page_padding">
+
+    <ImageView
+        android:id="@+id/userIcon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/account_circle_24dp"
+        android:contentDescription="@string/user_profile_picture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/userText"
+        style="@style/MusifyBodyText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/layout_item_margin_medium"
+        android:text="@string/user"
+        app:layout_constraintBottom_toBottomOf="@id/userIcon"
+        app:layout_constraintEnd_toStartOf="@id/configIconButton"
+        app:layout_constraintStart_toEndOf="@id/userIcon"
+        app:layout_constraintTop_toTopOf="@id/userIcon" />
+
+    <ImageButton
+        android:id="@+id/configIconButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/more_vert_24dp"
+        android:contentDescription="@string/user_configuration"
+        app:layout_constraintBottom_toBottomOf="@id/userIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/userIcon" />
+
+    <TextView
+        android:id="@+id/playlistTitle"
+        style="@style/MusifyBodyText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/library"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/configIconButton" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/horizontalPlaylists"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/playlistTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/trackTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/MusifyBodyText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horizontalPlaylists"
+        android:text="@string/tracks"/>
+
+    <ImageButton
+        android:id="@+id/addTrackButton"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/add_24dp"
+        android:contentDescription="@string/add_track"
+        app:layout_constraintTop_toTopOf="@id/trackTitle"
+        app:layout_constraintBottom_toBottomOf="@id/trackTitle"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/horizontalTracks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/addTrackButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

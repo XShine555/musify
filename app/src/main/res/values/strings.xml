@@ -20,8 +20,12 @@
     <string name="search">Buscar</string>
 
     <string name="item_playlist_content_descriptor">Imagen de la lista de reproducción</string>
-    <string name="set_name_to_playlist">Nombre de la playlist</string>
-    <string name="create">Crear</string>
+    <string name="add_playlist">Añadir una nueva lista de reproducción</string>
 
-    <string name="remove_bar_content_descriptor">Barra para cerrar el menú</string>
+    <string name="user">Usuario</string>
+    <string name="user_profile_picture">Foto de perfil de usuario</string>
+    <string name="user_configuration">Configuración del usuario</string>
+
+    <string name="tracks">Canciones</string>
+    <string name="add_track">Añadir canción</string>
 </resources>

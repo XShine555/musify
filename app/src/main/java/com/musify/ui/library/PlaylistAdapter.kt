@@ -17,9 +17,9 @@ class PlaylistAdapter(
 ) : ListAdapter<Playlist, PlaylistAdapter.PlaylistViewHolder>(PlaylistDiffCallback()) {
 
     inner class PlaylistViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val image: ImageView = itemView.findViewById(R.id.imageView)
-        private val title: TextView = itemView.findViewById(R.id.title)
-        private val owner: TextView = itemView.findViewById(R.id.owner)
+        private val image: ImageView = itemView.findViewById(R.id.playlistImage)
+        private val title: TextView = itemView.findViewById(R.id.playlistTitle)
+        private val owner: TextView = itemView.findViewById(R.id.playlistOwner)
 
         fun bind(item: Playlist) {
             title.text = item.title
@@ -40,7 +40,7 @@ class PlaylistAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaylistViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_playlist, parent, false)
+            .inflate(R.layout.library_item_playlist, parent, false)
         return PlaylistViewHolder(view)
     }
 
