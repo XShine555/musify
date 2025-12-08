@@ -28,4 +28,7 @@
 
     <string name="tracks">Canciones</string>
     <string name="add_track">Añadir canción</string>
+
+    <string name="search_musify_title">Buscar en Musify</string>
+    <string name="users">Usuarios</string>
 </resources>

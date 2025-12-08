@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.musify.R
+import com.musify.model.SearchItem
+import com.musify.model.SearchType
 
 class SearchFragment : Fragment() {
 
@@ -19,12 +21,27 @@ class SearchFragment : Fragment() {
 
     // Lista completa de ejemplo
     private val allResults = listOf(
-        SearchItem("Song 1", "https://picsum.photos/200", "song"),
-        SearchItem("Song 2", "https://picsum.photos/201", "song"),
-        SearchItem("Dua Lipa", "https://picsum.photos/202", "user"),
-        SearchItem("User123", "https://picsum.photos/203", "user"),
-        SearchItem("Song 3", "https://cdn-images.dzcdn.net/images/artist/79880cc1b999b15567e332203464c34e/1900x1900-000000-81-0-0.jpg", "song"),
-        SearchItem("UserX", "https://picsum.photos/205", "user")
+        SearchItem(
+            "Moscow Mule",
+            "https://i.scdn.co/image/ab67616d0000b27349d694203245f241a1bcaa72",
+            SearchType.TRACK
+        ),
+        SearchItem(
+            "Como Antes",
+            "https://i.scdn.co/image/ab67616d0000b273519266cd05491a5b5bc22d1e",
+            SearchType.TRACK
+        ),
+        SearchItem("Dua Lipa", "https://picsum.photos/202", SearchType.USER),
+        SearchItem(
+            "Quevedo",
+            "https://akamai.sscdn.co/uploadfile/letras/fotos/1/c/4/1/1c41718dc8bd31b7bfdc49e4d1d10be8.jpg",
+            SearchType.USER
+        ),
+        SearchItem(
+            "La Última",
+            "https://cdn-images.dzcdn.net/images/artist/79880cc1b999b15567e332203464c34e/1900x1900-000000-81-0-0.jpg",
+            SearchType.TRACK
+        )
     )
 
     private var filterSongs = false
@@ -52,19 +69,18 @@ class SearchFragment : Fragment() {
 
         // Mostrar todos los resultados por defecto
         adapter.updateList(allResults)
-        updateButtonColors(btnSongs, btnUsers)
 
         fun applyFilter() {
             val query = searchEditText.text.toString().lowercase()
             val filtered = allResults.filter {
                 val matchesQuery = it.name.lowercase().contains(query)
-                val matchesFilter = (!filterSongs && !filterUsers) ||  // Si ningún filtro activo, mostrar todo
-                        (filterSongs && it.type == "song") ||
-                        (filterUsers && it.type == "user")
+                val matchesFilter =
+                    (!filterSongs && !filterUsers) ||
+                            (filterSongs && it.type == SearchType.TRACK) ||
+                            (filterUsers && it.type == SearchType.USER)
                 matchesQuery && matchesFilter
             }
             adapter.updateList(filtered)
-            updateButtonColors(btnSongs, btnUsers)
         }
 
         btnSongs.setOnClickListener {
@@ -84,14 +100,5 @@ class SearchFragment : Fragment() {
                 applyFilter()
             }
         })
-    }
-
-    private fun updateButtonColors(btnSongs: MaterialButton, btnUsers: MaterialButton) {
-        btnSongs.setBackgroundColor(
-            if (filterSongs) resources.getColor(R.color.secondary) else resources.getColor(R.color.dark_gray)
-        )
-        btnUsers.setBackgroundColor(
-            if (filterUsers) resources.getColor(R.color.secondary) else resources.getColor(R.color.dark_gray)
-        )
     }
 }

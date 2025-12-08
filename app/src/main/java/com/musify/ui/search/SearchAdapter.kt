@@ -9,7 +9,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.musify.R
+import com.musify.model.SearchItem
+import com.musify.model.SearchType
 
 class SearchAdapter(
     private val items: MutableList<SearchItem>
@@ -22,7 +25,7 @@ class SearchAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_search_result, parent, false)
+            .inflate(R.layout.search_item_result, parent, false)
         return ViewHolder(view)
     }
 
@@ -31,14 +34,15 @@ class SearchAdapter(
 
         holder.name.text = item.name
 
-        // Cargar la imagen con Glide
+        // Cargar la imagen.
         Glide.with(holder.itemView)
             .load(item.imageUrl)
-            .placeholder(R.drawable.ic_launcher_background) // placeholder local
+            .centerCrop()
+            .placeholder(R.drawable.playlist_placeholder)
+            .transform(RoundedCorners(16))
             .into(holder.img)
 
-        // Forma: circular para usuarios, cuadrada para canciones
-        if (item.type == "user") {
+        if (item.type == SearchType.USER) {
             holder.img.background = ShapeDrawable(OvalShape())
             holder.img.clipToOutline = true
         } else {
