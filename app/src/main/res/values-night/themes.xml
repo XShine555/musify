@@ -13,8 +13,5 @@
         <item name="android:textColorHint">@color/hint</item>
         <item name="fontFamily">@font/poppins</item>
         <item name="bottomSheetDialogTheme">@style/MusifyBottomSheetDialog</item>
-
-        <item name="android:windowLightStatusBar">false</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 </resources>

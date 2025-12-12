@@ -24,8 +24,8 @@ class SearchAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.search_item_result, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.search_item_result, parent, false)
         return ViewHolder(view)
     }
 
@@ -34,12 +34,8 @@ class SearchAdapter(
 
         holder.name.text = item.name
 
-        // Cargar la imagen.
-        Glide.with(holder.itemView)
-            .load(item.imageUrl)
-            .centerCrop()
-            .placeholder(R.drawable.playlist_placeholder)
-            .transform(RoundedCorners(16))
+        Glide.with(holder.itemView).load(item.imageUrl).centerCrop()
+            .placeholder(R.drawable.playlist_placeholder).transform(RoundedCorners(16))
             .into(holder.img)
 
         if (item.type == SearchType.USER) {

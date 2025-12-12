@@ -9,38 +9,38 @@
         style="@style/MusifyHeaderText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="@dimen/page_padding"
         android:text="@string/sign_up_in_musify"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:padding="@dimen/page_padding" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/loginLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center_horizontal"
-        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        android:padding="24dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomLayout"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        android:padding="24dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="@dimen/activity_vertical_margin">
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/username_label"
+                style="@style/MusifyBodyText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/layout_item_margin_medium"
-                android:text="@string/username"
                 android:labelFor="@id/username"
-                style="@style/MusifyBodyText" />
+                android:text="@string/username" />
 
             <EditText
                 android:id="@+id/username"
@@ -58,12 +58,12 @@
 
             <TextView
                 android:id="@+id/password_label"
+                style="@style/MusifyBodyText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/password"
                 android:layout_marginBottom="@dimen/layout_item_margin_medium"
                 android:labelFor="@id/password"
-                style="@style/MusifyBodyText" />
+                android:text="@string/password" />
 
             <EditText
                 android:id="@+id/password"
@@ -76,11 +76,11 @@
 
         <Button
             android:id="@+id/register_button"
+            style="@style/MusifyPrimaryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="@string/sign_up"
-            style="@style/MusifyPrimaryButton" />
+            android:text="@string/sign_up" />
 
     </LinearLayout>
 
@@ -88,12 +88,12 @@
         android:id="@+id/bottomLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:paddingBottom="24dp">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             style="@style/MusifyBodyText"
@@ -106,8 +106,8 @@
             style="@style/MusifyTransparentTextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="@string/log_in"/>
+            android:text="@string/log_in"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

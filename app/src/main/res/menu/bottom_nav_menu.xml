@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/navigation_library"
-        android:icon="@drawable/library_music_24dp"
+        android:icon="@drawable/ic_library_music"
         android:title="@string/library" />
 
     <item
@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/navigation_user"
-        android:icon="@drawable/account_circle_24dp"
+        android:icon="@drawable/ic_account_circle"
         android:title="@string/user" />
 
 </menu>

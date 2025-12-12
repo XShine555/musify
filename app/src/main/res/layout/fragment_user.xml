@@ -11,7 +11,7 @@
         android:id="@+id/userIcon"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:background="@drawable/account_circle_24dp"
+        android:background="@drawable/ic_account_circle"
         android:contentDescription="@string/user_profile_picture"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +32,7 @@
         android:id="@+id/configIconButton"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:background="@drawable/more_vert_24dp"
+        android:background="@drawable/ic_more_vert"
         android:contentDescription="@string/user_configuration"
         app:layout_constraintBottom_toBottomOf="@id/userIcon"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,41 +53,41 @@
         android:id="@+id/horizontalPlaylists"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
         android:clipToPadding="false"
+        android:padding="8dp"
         android:scrollbars="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/playlistTitle"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/playlistTitle" />
 
     <TextView
         android:id="@+id/trackTitle"
+        style="@style/MusifyBodyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/MusifyBodyText"
+        android:text="@string/tracks"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/horizontalPlaylists"
-        android:text="@string/tracks"/>
+        app:layout_constraintTop_toBottomOf="@id/horizontalPlaylists" />
 
     <ImageButton
         android:id="@+id/addTrackButton"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:background="@drawable/add_24dp"
+        android:background="@drawable/ic_add"
         android:contentDescription="@string/add_track"
-        app:layout_constraintTop_toTopOf="@id/trackTitle"
         app:layout_constraintBottom_toBottomOf="@id/trackTitle"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/trackTitle" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/horizontalTracks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
         android:clipToPadding="false"
+        android:padding="8dp"
         android:scrollbars="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/addTrackButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/addTrackButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

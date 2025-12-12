@@ -10,26 +10,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.musify.R
-import com.musify.model.Playlist
+import com.musify.model.PlaylistItem
 
 class PlaylistAdapter(
-    private val onItemClick: ((Playlist) -> Unit)? = null
-) : ListAdapter<Playlist, PlaylistAdapter.PlaylistViewHolder>(PlaylistDiffCallback()) {
+    private val onItemClick: ((PlaylistItem) -> Unit)? = null
+) : ListAdapter<PlaylistItem, PlaylistAdapter.PlaylistViewHolder>(PlaylistDiffCallback()) {
 
     inner class PlaylistViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val image: ImageView = itemView.findViewById(R.id.playlistImage)
         private val title: TextView = itemView.findViewById(R.id.playlistTitle)
         private val owner: TextView = itemView.findViewById(R.id.playlistOwner)
 
-        fun bind(item: Playlist) {
+        fun bind(item: PlaylistItem) {
             title.text = item.title
             owner.text = item.owner
 
-            Glide.with(itemView.context)
-                .load(item.imageUrl)
-                .centerCrop()
-                .placeholder(R.drawable.playlist_placeholder)
-                .transform(RoundedCorners(16))
+            Glide.with(itemView.context).load(item.imageUrl).centerCrop()
+                .placeholder(R.drawable.playlist_placeholder).transform(RoundedCorners(16))
                 .into(image)
 
             itemView.setOnClickListener {

@@ -12,17 +12,12 @@ class UserFragment : Fragment() {
 
     private var _binding: FragmentUserBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        val userViewModel =
-            ViewModelProvider(this).get(UserViewModel::class.java)
+        val userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         _binding = FragmentUserBinding.inflate(inflater, container, false)
         val root: View = binding.root

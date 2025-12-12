@@ -25,19 +25,15 @@ class SearchFragment : Fragment() {
             "Moscow Mule",
             "https://i.scdn.co/image/ab67616d0000b27349d694203245f241a1bcaa72",
             SearchType.TRACK
-        ),
-        SearchItem(
+        ), SearchItem(
             "Como Antes",
             "https://i.scdn.co/image/ab67616d0000b273519266cd05491a5b5bc22d1e",
             SearchType.TRACK
-        ),
-        SearchItem("Dua Lipa", "https://picsum.photos/202", SearchType.USER),
-        SearchItem(
+        ), SearchItem("Dua Lipa", "https://picsum.photos/202", SearchType.USER), SearchItem(
             "Quevedo",
             "https://akamai.sscdn.co/uploadfile/letras/fotos/1/c/4/1/1c41718dc8bd31b7bfdc49e4d1d10be8.jpg",
             SearchType.USER
-        ),
-        SearchItem(
+        ), SearchItem(
             "La Última",
             "https://cdn-images.dzcdn.net/images/artist/79880cc1b999b15567e332203464c34e/1900x1900-000000-81-0-0.jpg",
             SearchType.TRACK
@@ -48,9 +44,7 @@ class SearchFragment : Fragment() {
     private var filterUsers = false
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
@@ -75,9 +69,7 @@ class SearchFragment : Fragment() {
             val filtered = allResults.filter {
                 val matchesQuery = it.name.lowercase().contains(query)
                 val matchesFilter =
-                    (!filterSongs && !filterUsers) ||
-                            (filterSongs && it.type == SearchType.TRACK) ||
-                            (filterUsers && it.type == SearchType.USER)
+                    (!filterSongs && !filterUsers) || (filterSongs && it.type == SearchType.TRACK) || (filterUsers && it.type == SearchType.USER)
                 matchesQuery && matchesFilter
             }
             adapter.updateList(filtered)
