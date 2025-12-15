@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.musify.R
-import com.musify.model.SearchItem
-import com.musify.model.SearchType
+import com.musify.model.SearchResultItem
+import com.musify.model.SearchResultType
 
 class SearchAdapter(
-    private val items: MutableList<SearchItem>
+    private val items: MutableList<SearchResultItem>
 ) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -39,7 +39,7 @@ class SearchAdapter(
             .placeholder(R.drawable.playlist_placeholder).transform(RoundedCorners(16))
             .into(holder.img)
 
-        if (item.type == SearchType.USER) {
+        if (item.type == SearchResultType.USER) {
             holder.img.background = ShapeDrawable(OvalShape())
             holder.img.clipToOutline = true
         } else {
@@ -50,7 +50,7 @@ class SearchAdapter(
 
     override fun getItemCount(): Int = items.size
 
-    fun updateList(newList: List<SearchItem>) {
+    fun updateList(newList: List<SearchResultItem>) {
         items.clear()
         items.addAll(newList)
         notifyDataSetChanged()

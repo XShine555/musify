@@ -6,8 +6,8 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.musify.databinding.FragmentLibraryBinding
 
@@ -15,7 +15,6 @@ class LibraryFragment : Fragment() {
 
     private var _binding: FragmentLibraryBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: LibraryViewModel by viewModels()
 
     private lateinit var adapter: PlaylistAdapter
 
@@ -24,18 +23,24 @@ class LibraryFragment : Fragment() {
     ): View {
         _binding = FragmentLibraryBinding.inflate(inflater, container, false)
 
-        adapter = PlaylistAdapter()
+        adapter = PlaylistAdapter(
+            LibraryDataSource.items, { item ->
+                Toast.makeText(
+                    requireContext(), "Has clicat: ${item.title}", Toast.LENGTH_SHORT
+                ).show()
+            })
         binding.recyclerViewPlaylists.adapter = adapter
         binding.recyclerViewPlaylists.layoutManager = LinearLayoutManager(requireContext())
-
-        viewModel.playlists.observe(viewLifecycleOwner) { playlists ->
-            adapter.submitList(playlists)
-        }
 
         val searchInput = binding.searchInput
         searchInput.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                viewModel.searchPlaylists(s.toString())
+                adapter.updateList(
+                    LibraryDataSource.items.filter { item ->
+                        item.title.contains(s.toString(), true) || item.owner.contains(
+                            s.toString(), true
+                        )
+                    })
             }
 
             override fun beforeTextChanged(

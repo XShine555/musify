@@ -1,5 +1,5 @@
 package com.musify.model
 
-enum class SearchType {
+enum class SearchResultType {
     USER, TRACK
 }
