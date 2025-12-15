@@ -1,56 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.library.LibraryFragment"
     tools:padding="@dimen/page_padding">
 
+    <TextView
+        android:id="@+id/title"
+        style="@style/MusifyHeaderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/library"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
+        android:id="@+id/searchLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title">
 
-        <TextView
-            android:id="@+id/libraryTitle"
-            android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/searchInput"
+            style="@style/MusifyEditText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/library"
-            android:layout_marginBottom="16dp"
-            style="@style/MusifyHeaderText"/>
+            android:layout_weight="1"
+            android:autofillHints=""
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="10dp"
+            android:hint="@string/search"
+            android:inputType="text" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/addPlaylistButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical">
-
-            <EditText
-                android:id="@+id/searchInput"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="@string/search"
-                android:autofillHints=""
-                android:inputType="text"
-                android:drawableStart="@drawable/search_24dp"
-                android:drawablePadding="10dp"
-                style="@style/MusifyEditText" />
-
-            <ImageButton
-                android:id="@+id/add_playlist_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:background="@drawable/add_24dp"
-                android:contentDescription="@string/add_playlist"/>
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewHome"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="6dp" />
-
+            android:layout_marginStart="12dp"
+            android:background="@drawable/ic_add"
+            android:contentDescription="@string/add_playlist" />
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPlaylists"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

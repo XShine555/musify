@@ -6,71 +6,65 @@
     android:layout_height="match_parent"
     tools:padding="@dimen/page_padding">
 
-    <!-- Title -->
     <TextView
         android:id="@+id/searchTitle"
+        style="@style/MusifyHeaderText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/search_musify_title"
-        style="@style/MusifyHeaderText"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Search input -->
     <EditText
         android:id="@+id/searchEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/search"
-        android:autofillHints=""
-        android:inputType="text"
-        android:drawableStart="@drawable/search_24dp"
-        android:drawablePadding="10dp"
         style="@style/MusifyEditText"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/searchTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="10dp"
+        android:hint="@string/search"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/searchTitle" />
 
-    <!-- Filter buttons -->
     <LinearLayout
         android:id="@+id/filterLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_marginTop="6dp"
-        android:layout_marginBottom="3dp"
-        app:layout_constraintTop_toBottomOf="@id/searchEditText"
-        app:layout_constraintStart_toStartOf="parent">
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchEditText">
 
         <Button
             android:id="@+id/btnSongs"
             style="@style/MusifyPrimaryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tracks"
-            android:checkable="true"/>
+            android:checkable="true"
+            android:text="@string/tracks" />
 
         <Button
             android:id="@+id/btnUsers"
             style="@style/MusifyPrimaryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/users"
             android:layout_marginStart="8dp"
-            android:checkable="true"/>
+            android:checkable="true"
+            android:text="@string/users" />
     </LinearLayout>
 
-
-    <!-- RecyclerView results -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchRecyclerView"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/filterLayout"
+        android:layout_marginTop="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/filterLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

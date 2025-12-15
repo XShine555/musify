@@ -26,9 +26,11 @@
     <string name="user_profile_picture">Foto de perfil de usuario</string>
     <string name="user_configuration">Configuración del usuario</string>
 
+    <string name="track">Canción</string>
     <string name="tracks">Canciones</string>
     <string name="add_track">Añadir canción</string>
 
     <string name="search_musify_title">Buscar en Musify</string>
     <string name="users">Usuarios</string>
+    <string name="search_image_content_descriptor">Imagen de un usuario o canción</string>
 </resources>

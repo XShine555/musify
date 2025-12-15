@@ -1,50 +1,29 @@
 package com.musify.ui.library
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.musify.R
-import com.musify.model.Playlist
+import com.musify.model.PlaylistItem
 
 class PlaylistAdapter(
-    private val onItemClick: ((Playlist) -> Unit)? = null
-) : ListAdapter<Playlist, PlaylistAdapter.PlaylistViewHolder>(PlaylistDiffCallback()) {
-
-    inner class PlaylistViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val image: ImageView = itemView.findViewById(R.id.playlistImage)
-        private val title: TextView = itemView.findViewById(R.id.playlistTitle)
-        private val owner: TextView = itemView.findViewById(R.id.playlistOwner)
-
-        fun bind(item: Playlist) {
-            title.text = item.title
-            owner.text = item.owner
-
-            Glide.with(itemView.context)
-                .load(item.imageUrl)
-                .centerCrop()
-                .placeholder(R.drawable.playlist_placeholder)
-                .transform(RoundedCorners(16))
-                .into(image)
-
-            itemView.setOnClickListener {
-                onItemClick?.invoke(item)
-            }
-        }
+    private var items: List<PlaylistItem>, private val onItemClick: (PlaylistItem) -> Unit
+) : RecyclerView.Adapter<PlaylistHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaylistHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val view = inflater.inflate(R.layout.item_library_playlist, parent, false)
+        return PlaylistHolder(view, onItemClick)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaylistViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.library_item_playlist, parent, false)
-        return PlaylistViewHolder(view)
+    override fun getItemCount(): Int = items.size
+
+    override fun onBindViewHolder(holder: PlaylistHolder, position: Int) {
+        val item = items[position]
+        holder.bind(item)
     }
 
-    override fun onBindViewHolder(holder: PlaylistViewHolder, position: Int) {
-        holder.bind(getItem(position))
+    fun updateList(newList: List<PlaylistItem>) {
+        items = newList
+        notifyDataSetChanged()
     }
 }

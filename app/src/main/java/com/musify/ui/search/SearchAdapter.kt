@@ -11,38 +11,35 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.musify.R
-import com.musify.model.SearchItem
-import com.musify.model.SearchType
+import com.musify.model.SearchResultItem
+import com.musify.model.SearchResultType
 
 class SearchAdapter(
-    private val items: MutableList<SearchItem>
+    private val items: MutableList<SearchResultItem>
 ) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val img: ImageView = view.findViewById(R.id.itemImage)
-        val name: TextView = view.findViewById(R.id.itemName)
+        val img: ImageView = view.findViewById(R.id.image)
+        val title: TextView = view.findViewById(R.id.title)
+        val subtitle: TextView = view.findViewById(R.id.subtitle)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.search_item_result, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_search_result, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
 
-        holder.name.text = item.name
+        holder.title.text = item.title
 
-        // Cargar la imagen.
-        Glide.with(holder.itemView)
-            .load(item.imageUrl)
-            .centerCrop()
-            .placeholder(R.drawable.playlist_placeholder)
-            .transform(RoundedCorners(16))
+        Glide.with(holder.itemView).load(item.imageUrl).centerCrop()
+            .placeholder(R.drawable.playlist_placeholder).transform(RoundedCorners(16))
             .into(holder.img)
 
-        if (item.type == SearchType.USER) {
+        if (item.type == SearchResultType.USER) {
             holder.img.background = ShapeDrawable(OvalShape())
             holder.img.clipToOutline = true
         } else {
@@ -53,7 +50,7 @@ class SearchAdapter(
 
     override fun getItemCount(): Int = items.size
 
-    fun updateList(newList: List<SearchItem>) {
+    fun updateList(newList: List<SearchResultItem>) {
         items.clear()
         items.addAll(newList)
         notifyDataSetChanged()
