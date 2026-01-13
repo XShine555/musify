@@ -30,11 +30,9 @@ class UserFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val userPlaylistsAdapter = UserPlaylistsAdapter(
             PlaylistDataSource.items,
-            { searchResult ->
+            { item ->
                 Toast.makeText(
-                    view.context,
-                    searchResult.title,
-                    Toast.LENGTH_SHORT
+                    requireContext(), "Has clicat: ${item.title}", Toast.LENGTH_SHORT
                 ).show()
             }
         )
@@ -48,11 +46,9 @@ class UserFragment : Fragment() {
 
         val userTracksAdapter = UserTracksAdapter(
             TrackDataSource.items,
-            { searchResult ->
+            { item ->
                 Toast.makeText(
-                    view.context,
-                    searchResult.title,
-                    Toast.LENGTH_SHORT
+                    requireContext(), "Has clicat: ${item.title}", Toast.LENGTH_SHORT
                 ).show()
             }
         )

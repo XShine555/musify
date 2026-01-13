@@ -30,11 +30,9 @@ class SearchFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.searchRecyclerView)
 
-        adapter = SearchResultAdapter(SearchDataSource.items, { searchResult ->
+        adapter = SearchResultAdapter(SearchDataSource.items, { item ->
             Toast.makeText(
-                view.context,
-                searchResult.title,
-                Toast.LENGTH_SHORT
+                requireContext(), "Has clicat: ${item.title}", Toast.LENGTH_SHORT
             ).show()
         })
         recyclerView.adapter = adapter
