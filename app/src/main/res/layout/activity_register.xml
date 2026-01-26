@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/layout_item_margin_medium"
-                android:labelFor="@id/register_username"
+                android:labelFor="@id/username"
                 android:text="@string/username" />
 
             <EditText

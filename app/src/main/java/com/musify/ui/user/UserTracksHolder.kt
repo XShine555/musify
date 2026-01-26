@@ -13,8 +13,8 @@ import com.musify.model.UserTrackResult
 class UserTracksHolder(
     itemView: View, private val onItemClick: (UserTrackResult) -> Unit
 ) : RecyclerView.ViewHolder(itemView) {
-    private val trackTitle: TextView = itemView.findViewById(R.id.itemUserTrackTitle)
-    private val trackImage: ImageView = itemView.findViewById(R.id.itemUserTrackImage)
+    private val trackTitle: TextView = itemView.findViewById(R.id.track_title)
+    private val trackImage: ImageView = itemView.findViewById(R.id.track_image)
 
     fun bind(item: UserTrackResult) {
         trackTitle.text = item.title

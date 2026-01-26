@@ -13,9 +13,9 @@ import com.musify.model.PlaylistResult
 class PlaylistResultHolder(
     itemView: View, private val onItemClick: (PlaylistResult) -> Unit
 ) : RecyclerView.ViewHolder(itemView) {
-    private val playlistTitle: TextView = itemView.findViewById(R.id.title)
-    private val playlistOwner: TextView = itemView.findViewById(R.id.owner)
-    private val playlistImage: ImageView = itemView.findViewById(R.id.image)
+    private val playlistTitle: TextView = itemView.findViewById(R.id.playlist_title)
+    private val playlistOwner: TextView = itemView.findViewById(R.id.playlist_owner)
+    private val playlistImage: ImageView = itemView.findViewById(R.id.playlist_image)
 
     fun bind(item: PlaylistResult) {
         playlistTitle.text = item.title

@@ -14,9 +14,9 @@ import com.musify.model.SearchResultType
 class SearchResultHolder(
     itemView: View, private val onItemClick: (SearchResult) -> Unit
 ) : RecyclerView.ViewHolder(itemView) {
-    private val searchTitle: TextView = itemView.findViewById(R.id.searchResultTitle)
-    private val searchImage: ImageView = itemView.findViewById(R.id.searchResultImage)
-    private val searchSubtitle: TextView = itemView.findViewById(R.id.searchResultSubtitle)
+    private val searchTitle: TextView = itemView.findViewById(R.id.search_result_title)
+    private val searchImage: ImageView = itemView.findViewById(R.id.search_result_image)
+    private val searchSubtitle: TextView = itemView.findViewById(R.id.search_result_subtitle)
 
     fun bind(item: SearchResult) {
         searchTitle.text = item.title

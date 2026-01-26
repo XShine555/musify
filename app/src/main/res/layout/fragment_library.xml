@@ -8,7 +8,7 @@
     tools:padding="@dimen/page_padding">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/library_title"
         style="@style/MusifyHeaderText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,16 +18,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/searchLayout"
+        android:id="@+id/search_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title">
+        app:layout_constraintTop_toBottomOf="@id/library_title">
 
         <EditText
-            android:id="@+id/searchInput"
+            android:id="@+id/search_input"
             style="@style/MusifyEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -48,12 +48,12 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewPlaylists"
+        android:id="@+id/playlists_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchLayout" />
+        app:layout_constraintTop_toBottomOf="@id/search_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

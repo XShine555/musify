@@ -6,7 +6,7 @@
     android:padding="6dp">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/playlist_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/corner_radius_16dp"
@@ -18,24 +18,24 @@
         app:srcCompat="@drawable/playlist_placeholder" />
 
     <LinearLayout
-        android:id="@+id/textContainer"
+        android:id="@+id/text_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@id/image"
-        app:layout_constraintStart_toEndOf="@id/image"
-        app:layout_constraintTop_toTopOf="@id/image">
+        app:layout_constraintBottom_toBottomOf="@id/playlist_image"
+        app:layout_constraintStart_toEndOf="@id/playlist_image"
+        app:layout_constraintTop_toTopOf="@id/playlist_image">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/playlist_title"
             style="@style/MusifyBodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Playlist Title" />
 
         <TextView
-            android:id="@+id/owner"
+            android:id="@+id/playlist_owner"
             style="@style/MusifySmallText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

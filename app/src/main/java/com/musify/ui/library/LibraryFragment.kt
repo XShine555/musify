@@ -29,8 +29,8 @@ class LibraryFragment : Fragment() {
                     requireContext(), "Has clicat: ${item.title}", Toast.LENGTH_SHORT
                 ).show()
             })
-        binding.recyclerViewPlaylists.adapter = adapter
-        binding.recyclerViewPlaylists.layoutManager = LinearLayoutManager(requireContext())
+        binding.playlistsList.adapter = adapter
+        binding.playlistsList.layoutManager = LinearLayoutManager(requireContext())
 
         val searchInput = binding.searchInput
         searchInput.addTextChangedListener(object : TextWatcher {

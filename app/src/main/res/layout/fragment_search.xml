@@ -38,10 +38,10 @@
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_edit_text">
+        app:layout_constraintTop_toBottomOf="@id/search_input">
 
         <CheckBox
-            android:id="@+id/check_box_songs"
+            android:id="@+id/check_box_tracks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
@@ -49,7 +49,7 @@
             android:text="@string/tracks" />
 
         <CheckBox
-            android:id="@+id/check_box_users"
+            android:id="@+id/check_box_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

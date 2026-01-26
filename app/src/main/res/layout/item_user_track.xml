@@ -7,7 +7,7 @@
     android:padding="8dp">
 
     <ImageView
-        android:id="@+id/itemUserTrackImage"
+        android:id="@+id/track_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/corner_radius_16dp"
@@ -19,7 +19,7 @@
         tools:background="@drawable/playlist_placeholder"/>
 
     <TextView
-        android:id="@+id/itemUserTrackTitle"
+        android:id="@+id/track_title"
         style="@style/MusifySubtleText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/itemUserTrackImage"
+        app:layout_constraintTop_toBottomOf="@id/track_image"
         tools:text="Playlist Title"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

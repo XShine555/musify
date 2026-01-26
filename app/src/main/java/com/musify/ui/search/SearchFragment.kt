@@ -40,16 +40,16 @@ class SearchFragment : Fragment() {
         fun updateResults() {
             adapter.updateList(
                 SearchDataSource.items.filter { searchResult ->
-                    (searchResult.type != SearchResultType.USER || binding.checkBoxUsers.isChecked) && (searchResult.type != SearchResultType.TRACK || binding.checkBoxSongs.isChecked) && searchResult.title.contains(
+                    (searchResult.type != SearchResultType.USER || binding.checkBoxUser.isChecked) && (searchResult.type != SearchResultType.TRACK || binding.checkBoxTracks.isChecked) && searchResult.title.contains(
                         binding.searchInput.text.toString(), ignoreCase = true
                     )
                 })
         }
 
-        binding.checkBoxSongs.setOnClickListener {
+        binding.checkBoxTracks.setOnClickListener {
             updateResults()
         }
-        binding.checkBoxUsers.setOnClickListener {
+        binding.checkBoxUser.setOnClickListener {
             updateResults()
         }
 
