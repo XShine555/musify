@@ -24,5 +24,10 @@ class UserTracksAdapter (
         holder.bind(item)
     }
 
+    fun updateList(newList: List<UserTrackResult>) {
+        items = newList
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int = items.size
 }

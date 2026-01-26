@@ -6,14 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.musify.databinding.FragmentUserBinding
-import com.musify.ui.common.PlaylistDataSource
 
 class UserFragment : Fragment() {
     private var _binding: FragmentUserBinding? = null
 
     private val binding get() = _binding!!
+
+    private val viewModel: UserViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -25,27 +27,33 @@ class UserFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val userPlaylistsAdapter = UserPlaylistsAdapter(
-            PlaylistDataSource.items, { item ->
+        val playlistsAdapter = UserPlaylistsAdapter(
+            emptyList(), { item ->
                 Toast.makeText(
                     requireContext(), "Has clicat: ${item.title}", Toast.LENGTH_SHORT
                 ).show()
             })
-        binding.playlistsList.adapter = userPlaylistsAdapter
+        binding.playlistsList.adapter = playlistsAdapter
         binding.playlistsList.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.HORIZONTAL, false
         )
+        viewModel.playlists.observe(viewLifecycleOwner) { playlistResults ->
+            playlistsAdapter.updateList(playlistResults)
+        }
 
-        val userTracksAdapter = UserTracksAdapter(
-            TrackDataSource.items, { item ->
+        val tracksAdapter = UserTracksAdapter(
+            emptyList(), { item ->
                 Toast.makeText(
                     requireContext(), "Has clicat: ${item.title}", Toast.LENGTH_SHORT
                 ).show()
             })
-        binding.tracksLists.adapter = userTracksAdapter
+        binding.tracksLists.adapter = tracksAdapter
         binding.tracksLists.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.HORIZONTAL, false
         )
+        viewModel.tracks.observe(viewLifecycleOwner) { trackResults ->
+            tracksAdapter.updateList(trackResults)
+        }
     }
 
     override fun onDestroyView() {

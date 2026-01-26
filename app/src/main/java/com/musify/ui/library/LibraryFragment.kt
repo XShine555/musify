@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.musify.databinding.FragmentLibraryBinding
 import com.musify.ui.common.PlaylistDataSource
@@ -16,21 +17,25 @@ class LibraryFragment : Fragment() {
     private var _binding: FragmentLibraryBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var adapter: PlaylistResultAdapter
+    private val viewModel: LibraryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLibraryBinding.inflate(inflater, container, false)
 
-        adapter = PlaylistResultAdapter(
-            PlaylistDataSource.items, { item ->
+        val adapter = PlaylistResultAdapter(
+            emptyList(), { item ->
                 Toast.makeText(
                     requireContext(), "Has clicat: ${item.title}", Toast.LENGTH_SHORT
                 ).show()
             })
         binding.playlistsList.adapter = adapter
         binding.playlistsList.layoutManager = LinearLayoutManager(requireContext())
+
+        viewModel.playlists.observe(viewLifecycleOwner) { playlistResults ->
+            adapter.updateList(playlistResults)
+        }
 
         val searchInput = binding.searchInput
         searchInput.addTextChangedListener(object : TextWatcher {

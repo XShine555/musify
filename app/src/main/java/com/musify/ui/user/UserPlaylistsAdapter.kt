@@ -7,7 +7,7 @@ import com.musify.R
 import com.musify.model.PlaylistResult
 
 // Adapter encargado de mostrar la lista de Playlists en el RecyclerView.
-class UserPlaylistsAdapter (
+class UserPlaylistsAdapter(
     private var items: List<PlaylistResult>, private val onItemClick: (PlaylistResult) -> Unit
 ) : RecyclerView.Adapter<UserPlaylistsHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserPlaylistsHolder {
@@ -21,5 +21,10 @@ class UserPlaylistsAdapter (
     override fun onBindViewHolder(holder: UserPlaylistsHolder, position: Int) {
         val item = items[position]
         holder.bind(item)
+    }
+
+    fun updateList(newList: List<PlaylistResult>) {
+        items = newList
+        notifyDataSetChanged()
     }
 }

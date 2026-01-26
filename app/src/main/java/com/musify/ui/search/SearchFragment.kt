@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.musify.databinding.FragmentSearchBinding
 import com.musify.model.SearchResultType
@@ -16,6 +17,8 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
 
     private val binding get() = _binding!!
+
+    private val viewModel: SearchViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -28,13 +31,17 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = SearchResultAdapter(SearchDataSource.items, { item ->
+        val adapter = SearchResultAdapter(emptyList(), { item ->
             Toast.makeText(
                 requireContext(), "Has clicat: ${item.title}", Toast.LENGTH_SHORT
             ).show()
         })
         binding.searchList.adapter = adapter
         binding.searchList.layoutManager = LinearLayoutManager(requireContext())
+
+        viewModel.searchs.observe(viewLifecycleOwner) { searchResults ->
+            adapter.updateList(searchResults)
+        }
 
         // Actualiza la lista de resultados en función de los filtros activos y el texto de búsqueda.
         fun updateResults() {
