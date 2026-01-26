@@ -6,6 +6,7 @@
 
     <string name="username">Usuario</string>
     <string name="password">Contraseña</string>
+    <string name="repeat_password">Repite la contraseña</string>
 
     <string name="log_in">Iniciar sesión</string>
     <string name="log_in_musify">Inicia sesión en Musify</string>

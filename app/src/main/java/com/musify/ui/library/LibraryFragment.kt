@@ -13,7 +13,6 @@ import com.musify.databinding.FragmentLibraryBinding
 import com.musify.ui.common.PlaylistDataSource
 
 class LibraryFragment : Fragment() {
-
     private var _binding: FragmentLibraryBinding? = null
     private val binding get() = _binding!!
 

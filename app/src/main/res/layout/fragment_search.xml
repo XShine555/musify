@@ -7,7 +7,7 @@
     tools:padding="@dimen/page_padding">
 
     <TextView
-        android:id="@+id/searchTitle"
+        android:id="@+id/search_title"
         style="@style/MusifyHeaderText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/searchEditText"
+        android:id="@+id/search_input"
         style="@style/MusifyEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,20 +28,20 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchTitle" />
+        app:layout_constraintTop_toBottomOf="@id/search_title" />
 
     <LinearLayout
-        android:id="@+id/filterLayout"
+        android:id="@+id/filter_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchEditText">
+        app:layout_constraintTop_toBottomOf="@id/search_edit_text">
 
         <CheckBox
-            android:id="@+id/checkBoxSongs"
+            android:id="@+id/check_box_songs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
@@ -49,7 +49,7 @@
             android:text="@string/tracks" />
 
         <CheckBox
-            android:id="@+id/checkBoxUsers"
+            android:id="@+id/check_box_users"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -59,7 +59,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/searchRecyclerView"
+        android:id="@+id/search_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingTop="10dp"
@@ -68,6 +68,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filterLayout" />
+        app:layout_constraintTop_toBottomOf="@id/filter_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

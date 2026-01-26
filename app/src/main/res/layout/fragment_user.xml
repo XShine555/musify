@@ -8,7 +8,7 @@
     tools:padding="@dimen/page_padding">
 
     <ImageView
-        android:id="@+id/fragmentUserIcon"
+        android:id="@+id/user_icon"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:background="@drawable/ic_account_circle"
@@ -17,29 +17,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/fragmentUserText"
+        android:id="@+id/username_text"
         style="@style/MusifyBodyText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/layout_item_margin_medium"
         android:text="@string/user"
-        app:layout_constraintBottom_toBottomOf="@id/fragmentUserIcon"
-        app:layout_constraintEnd_toStartOf="@id/fragmentUserConfigIconButton"
-        app:layout_constraintStart_toEndOf="@id/fragmentUserIcon"
-        app:layout_constraintTop_toTopOf="@id/fragmentUserIcon" />
+        app:layout_constraintBottom_toBottomOf="@id/user_icon"
+        app:layout_constraintEnd_toStartOf="@id/config_button"
+        app:layout_constraintStart_toEndOf="@id/user_icon"
+        app:layout_constraintTop_toTopOf="@id/user_icon" />
 
     <ImageButton
-        android:id="@+id/fragmentUserConfigIconButton"
+        android:id="@+id/config_button"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@drawable/ic_more_vert"
         android:contentDescription="@string/user_configuration"
-        app:layout_constraintBottom_toBottomOf="@id/fragmentUserIcon"
+        app:layout_constraintBottom_toBottomOf="@id/user_icon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/fragmentUserIcon" />
+        app:layout_constraintTop_toTopOf="@id/user_icon" />
 
     <TextView
-        android:id="@+id/fragmentUserPlaylistTitle"
+        android:id="@+id/playlists_title"
         style="@style/MusifyBodyText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,10 +47,10 @@
         android:text="@string/library"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragmentUserConfigIconButton" />
+        app:layout_constraintTop_toBottomOf="@id/config_button" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fragmentUserHorizontalPlaylists"
+        android:id="@+id/playlists_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
@@ -58,29 +58,29 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragmentUserPlaylistTitle" />
+        app:layout_constraintTop_toBottomOf="@id/playlists_title" />
 
     <TextView
-        android:id="@+id/fragmentUserTrackTitle"
+        android:id="@+id/tracks_title"
         style="@style/MusifyBodyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tracks"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragmentUserHorizontalPlaylists" />
+        app:layout_constraintTop_toBottomOf="@id/playlists_list" />
 
     <ImageButton
-        android:id="@+id/fragmentUserAddTrackButton"
+        android:id="@+id/add_track_button"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:background="@drawable/ic_add"
         android:contentDescription="@string/add_track"
-        app:layout_constraintBottom_toBottomOf="@id/fragmentUserTrackTitle"
+        app:layout_constraintBottom_toBottomOf="@id/tracks_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/fragmentUserTrackTitle" />
+        app:layout_constraintTop_toTopOf="@id/tracks_title" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fragmentUserHorizontalTracks"
+        android:id="@+id/tracks_lists"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
@@ -88,6 +88,6 @@
         android:scrollbars="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragmentUserAddTrackButton" />
+        app:layout_constraintTop_toBottomOf="@id/add_track_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
