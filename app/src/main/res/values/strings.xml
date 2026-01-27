@@ -4,6 +4,8 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    <string name="go_back_button_content_descriptor">Botón para ir hacia atrás.</string>
+
     <string name="username">Nombre de usuario</string>
     <string name="password">Contraseña</string>
     <string name="type_your_username">Escribe tu nombre de usuario</string>

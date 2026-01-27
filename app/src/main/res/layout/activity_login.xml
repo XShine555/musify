@@ -13,6 +13,7 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/go_back_button_background"
         android:scaleType="centerInside"
+        android:contentDescription="@string/go_back_button_content_descriptor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
