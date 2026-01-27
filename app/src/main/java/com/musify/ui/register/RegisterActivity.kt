@@ -1,9 +1,12 @@
-package com.musify.ui
+package com.musify.ui.register
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.musify.databinding.ActivityRegisterBinding
+import com.musify.ui.MainActivity
+import com.musify.ui.landing.LandingActivity
+import com.musify.ui.login.LoginActivity
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding

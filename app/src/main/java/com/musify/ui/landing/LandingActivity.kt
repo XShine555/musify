@@ -1,4 +1,4 @@
-package com.musify.ui
+package com.musify.ui.landing
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.musify.R
 import com.musify.databinding.ActivityLandingBinding
+import com.musify.ui.login.LoginActivity
+import com.musify.ui.register.RegisterActivity
 
 class LandingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLandingBinding

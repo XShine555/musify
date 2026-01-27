@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Musify">
         <activity
-            android:name=".ui.LandingActivity"
+            android:name=".ui.landing.LandingActivity"
             android:exported="true"
             android:theme="@style/Theme.Musify.SplashScreen"
             android:launchMode="singleTask">
@@ -24,10 +24,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.RegisterActivity"
+            android:name=".ui.register.RegisterActivity"
             android:exported="true" />
         <activity
             android:name=".ui.MainActivity"

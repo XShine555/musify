@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    kotlin("kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -53,18 +53,9 @@ dependencies {
     implementation(libs.flexbox)
     implementation(libs.glide)
     implementation(libs.androidx.activity)
+    implementation(libs.androidx.core.splashscreen)
+    ksp(libs.ksp)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    // RecyclerView
-    implementation(libs.androidx.recyclerview)
-
-    // Splash Screen
-    implementation("androidx.core:core-splashscreen:1.2.0")
-
-    // Glide
-    implementation(libs.glide)
-    kapt("com.github.bumptech.glide:compiler:4.16.0")
-
 }
