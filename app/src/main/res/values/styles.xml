@@ -14,21 +14,23 @@
         <item name="android:paddingEnd">18dp</item>
         <item name="android:textColorHint">@color/hint</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">0.05</item>
     </style>
 
     <style name="MusifyPrimaryButton" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/primary</item>
         <item name="android:textColor">@color/on_primary</item>
-        <item name="android:paddingTop">24dp</item>
-        <item name="android:paddingBottom">24dp</item>
-        <item name="android:paddingStart">18dp</item>
-        <item name="android:paddingEnd">18dp</item>
+        <item name="android:paddingTop">22dp</item>
+        <item name="android:paddingBottom">22dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:stateListAnimator">@null</item>
         <item name="strokeColor">@color/primary_variant</item>
+        <item name="android:textSize">16sp</item>
         <item name="strokeWidth">3dp</item>
         <item name="cornerRadius">8dp</item>
-        <item name="android:letterSpacing">0</item>
+        <item name="android:letterSpacing">0.05</item>
     </style>
 
     <style name="MusifySecondaryButton" parent="MusifyPrimaryButton">
@@ -43,50 +45,44 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
+    <style name="MusifyOutlineButton" parent="MusifyPrimaryButton">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="strokeColor">@color/secondary</item>
+    </style>
+
     <style name="MusifyHeaderText">
         <item name="android:textSize">32sp</item>
         <item name="android:textColor">@color/on_surface</item>
         <item name="android:textStyle">bold</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">0.05</item>
     </style>
 
     <style name="MusifyBodyText">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/on_surface</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">0.05</item>
     </style>
 
     <style name="MusifySubtleText">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/on_surface</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">0.05</item>
     </style>
 
     <style name="MusifySmallText">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/on_surface</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">0.05</item>
     </style>
 
     <style name="MusifyHintText">
         <item name="android:textColor">@color/hint</item>
         <item name="android:textSize">14sp</item>
         <item name="android:includeFontPadding">false</item>
-    </style>
-
-    <style name="MusifyBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/MusifyBottomSheet</item>
-    </style>
-
-    <style name="MusifyBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
-        <item name="shapeAppearanceOverlay">@style/MusifyAppearanceBottomSheetDialog</item>
-    </style>
-
-    <style name="MusifyAppearanceBottomSheetDialog" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopRight">16dp</item>
-        <item name="cornerSizeTopLeft">16dp</item>
-        <item name="cornerSizeBottomRight">0dp</item>
-        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="android:letterSpacing">0.05</item>
     </style>
 </resources>

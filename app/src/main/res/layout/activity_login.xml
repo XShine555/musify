@@ -19,11 +19,13 @@
     <TextView
         android:id="@+id/welcome_back_text"
         style="@style/MusifyHeaderText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp"
         android:text="@string/login_welcome_back"
         app:layout_constraintStart_toStartOf="@+id/go_back_button"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/go_back_button" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -56,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="18dp"
         android:text="@string/login"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,8 +72,7 @@
         android:text="@string/you_dont_have_account"
         app:layout_constraintBottom_toTopOf="@+id/signup_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="8dp"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/signup_button"
