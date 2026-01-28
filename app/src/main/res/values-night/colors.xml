@@ -13,4 +13,5 @@
     <color name="on_surface">#FFFFFF</color>
 
     <color name="hint">#919191</color>
+    <color name="error">#b00020</color>
 </resources>
