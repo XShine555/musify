@@ -8,7 +8,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.musify.R
 import com.musify.databinding.FragmentUserBinding
+import com.musify.ui.common.HorizontalSpaceItemDecoration
 
 class UserFragment : Fragment() {
     private var _binding: FragmentUserBinding? = null
@@ -33,10 +37,13 @@ class UserFragment : Fragment() {
                     requireContext(), "Has clicat: ${item.title}", Toast.LENGTH_SHORT
                 ).show()
             })
-        binding.playlistsList.adapter = playlistsAdapter
-        binding.playlistsList.layoutManager = LinearLayoutManager(
+        binding.playlistList.adapter = playlistsAdapter
+        binding.playlistList.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.HORIZONTAL, false
         )
+        val playlistSpacing = resources.getDimensionPixelSize(R.dimen.item_margin_medium)
+        binding.playlistList.addItemDecoration(HorizontalSpaceItemDecoration(playlistSpacing))
+
         viewModel.playlists.observe(viewLifecycleOwner) { playlistResults ->
             playlistsAdapter.updateList(playlistResults)
         }
@@ -47,13 +54,21 @@ class UserFragment : Fragment() {
                     requireContext(), "Has clicat: ${item.title}", Toast.LENGTH_SHORT
                 ).show()
             })
-        binding.tracksLists.adapter = tracksAdapter
-        binding.tracksLists.layoutManager = LinearLayoutManager(
+        binding.trackLists.adapter = tracksAdapter
+        binding.trackLists.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.HORIZONTAL, false
         )
+        val trackSpacing = resources.getDimensionPixelSize(R.dimen.item_margin_medium)
+        binding.trackLists.addItemDecoration(HorizontalSpaceItemDecoration(trackSpacing))
+
         viewModel.tracks.observe(viewLifecycleOwner) { trackResults ->
             tracksAdapter.updateList(trackResults)
         }
+
+        val userImage = "https://cdn.pfps.gg/pfps/1957-patrick-star-profile-photo.png"
+        Glide.with(requireContext()).load(userImage).centerCrop()
+            .placeholder(R.drawable.ic_person)
+            .transform(RoundedCorners(R.dimen.radius_medium)).into(binding.userIcon)
     }
 
     override fun onDestroyView() {

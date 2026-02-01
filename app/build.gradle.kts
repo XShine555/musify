@@ -1,10 +1,11 @@
+import com.android.build.api.dsl.ApplicationExtension
+
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    kotlin("kapt")
+    id("com.google.devtools.ksp")
 }
 
-android {
+configure<ApplicationExtension> {
     namespace = "com.musify"
     compileSdk = 36
 
@@ -22,18 +23,16 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+
     buildFeatures {
         viewBinding = true
     }
@@ -52,18 +51,10 @@ dependencies {
     implementation(libs.androidx.recyclerview)
     implementation(libs.flexbox)
     implementation(libs.glide)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.core.splashscreen)
+    ksp(libs.ksp)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    // RecyclerView
-    implementation(libs.androidx.recyclerview)
-
-    // Splash Screen
-    implementation("androidx.core:core-splashscreen:1.2.0")
-
-    // Glide
-    implementation(libs.glide)
-    kapt("com.github.bumptech.glide:compiler:4.16.0")
-
 }

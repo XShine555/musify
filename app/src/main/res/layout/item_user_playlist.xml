@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="8dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/playlist_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/corner_radius_16dp"
+        android:layout_width="@dimen/image_size_medium"
+        android:layout_height="@dimen/image_size_medium"
         android:contentDescription="@string/item_playlist_content_descriptor"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="@drawable/playlist_placeholder"/>
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Musify.ImageRounded"
+        tools:background="@drawable/playlist_placeholder" />
 
     <TextView
         android:id="@+id/playlist_title"
-        style="@style/MusifySubtleText"
+        android:textAppearance="@style/TextAppearance.Musify"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/item_margin_small"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/playlist_image"
-        tools:text="Playlist Title"/>
+        tools:text="Title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

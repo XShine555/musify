@@ -10,8 +10,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.musify.R
 import com.musify.databinding.FragmentSearchBinding
 import com.musify.model.SearchResultType
+import com.musify.ui.common.VerticalSpaceItemDecoration
 
 class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
@@ -39,6 +41,13 @@ class SearchFragment : Fragment() {
         binding.searchList.adapter = adapter
         binding.searchList.layoutManager = LinearLayoutManager(requireContext())
 
+        val spacing = resources.getDimensionPixelSize(R.dimen.item_margin_small)
+        binding.searchList.addItemDecoration(
+            VerticalSpaceItemDecoration(
+                spacing
+            )
+        )
+
         viewModel.searchs.observe(viewLifecycleOwner) { searchResults ->
             adapter.updateList(searchResults)
         }
@@ -47,16 +56,16 @@ class SearchFragment : Fragment() {
         fun updateResults() {
             adapter.updateList(
                 SearchDataSource.items.filter { searchResult ->
-                    (searchResult.type != SearchResultType.USER || binding.checkBoxUser.isChecked) && (searchResult.type != SearchResultType.TRACK || binding.checkBoxTracks.isChecked) && searchResult.title.contains(
+                    (searchResult.type != SearchResultType.USER || binding.usersChip.isChecked) && (searchResult.type != SearchResultType.TRACK || binding.tracksChip.isChecked) && searchResult.title.contains(
                         binding.searchInput.text.toString(), ignoreCase = true
                     )
                 })
         }
 
-        binding.checkBoxTracks.setOnClickListener {
+        binding.tracksChip.setOnClickListener {
             updateResults()
         }
-        binding.checkBoxUser.setOnClickListener {
+        binding.usersChip.setOnClickListener {
             updateResults()
         }
 

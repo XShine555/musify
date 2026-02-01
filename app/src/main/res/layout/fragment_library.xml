@@ -4,57 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.library.LibraryFragment"
-    tools:padding="@dimen/page_padding">
+    tools:paddingHorizontal="@dimen/screen_padding_horizontal"
+    tools:paddingVertical="@dimen/screen_padding_vertical">
 
     <TextView
         android:id="@+id/library_title"
-        style="@style/MusifyHeaderText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="@dimen/item_margin_small"
         android:text="@string/library"
+        android:textAppearance="@style/TextAppearance.Musify.Title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/search_layout"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/your_playlists_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/item_margin_small"
+        android:text="@string/your_playlists"
+        android:textAppearance="@style/TextAppearance.Musify.Large"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/library_title">
-
-        <EditText
-            android:id="@+id/search_input"
-            style="@style/MusifyEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:autofillHints=""
-            android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="10dp"
-            android:hint="@string/search"
-            android:inputType="text" />
-
-        <ImageButton
-            android:id="@+id/addPlaylistButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:background="@drawable/ic_add"
-            android:contentDescription="@string/add_playlist" />
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@id/library_title" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/playlists_list"
+        android:id="@+id/playlist_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/item_margin_small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_layout" />
+        app:layout_constraintTop_toBottomOf="@id/your_playlists_title"
+        tools:itemCount="1"
+        tools:listitem="@layout/item_library_playlist" />
+
+    <TextView
+        android:id="@+id/recently_played_tracks_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/item_margin_small"
+        android:text="@string/listen_again"
+        android:textAppearance="@style/TextAppearance.Musify.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/playlist_list" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recently_played_tracks_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/item_margin_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recently_played_tracks_title"
+        tools:itemCount="1"
+        tools:listitem="@layout/item_recently_played_track" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

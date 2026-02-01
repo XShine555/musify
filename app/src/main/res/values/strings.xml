@@ -1,41 +1,47 @@
 <resources>
+    <!-- General -->
     <string name="app_name">Musify</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="go_back_button_content_descriptor">Botón para ir hacia atrás.</string>
 
-    <string name="username">Nombre de usuario</string>
-    <string name="password">Contraseña</string>
+    <!-- Landing -->
+    <string name="welcome_to_musify">¡Bienvenido a Musify!</string>
+    <string name="welcome_to_musify_description">Tu música, donde quieras y cuando quieras.</string>
+
+    <!-- Sign In -->
+    <string name="login">Iniciar sesión</string>
+    <string name="login_welcome_back">¡Nos alegra verte de nuevo!</string>
     <string name="type_your_username">Escribe tu nombre de usuario</string>
     <string name="type_your_password">Escribe tu contraseña</string>
-    <string name="repeat_password">Repite la contraseña</string>
+    <string name="error_username_empty">El nombre de usuario no puede estar vacío</string>
+    <string name="error_password_empty">La contraseña no puede estar vacía</string>
 
-    <string name="log_in">Iniciar sesión</string>
-    <string name="log_in_musify">Inicia sesión en Musify</string>
+    <!-- Sign Up -->
+    <string name="signup">Registrarse</string>
+    <string name="signup_in_musify">¡Hola! Regístrate y empieza a usar la app.</string>
+    <string name="repeat_password">Repite tu contraseña</string>
+    <string name="error_passwords_not_match">Las contraseñas no coinciden</string>
 
-    <string name="sign_up">Registrarse</string>
-    <string name="sign_up_in_musify">Regístrate en Musify</string>
-
-    <string name="you_already_have_account">¿Ya tienes una cuenta?</string>
-    <string name="you_dont_have_account">¿No tienes cuenta?</string>
-
+    <!-- Navigation -->
     <string name="library">Biblioteca</string>
     <string name="search">Buscar</string>
-
-    <string name="item_playlist_content_descriptor">Imagen de la lista de reproducción</string>
-    <string name="add_playlist">Añadir una nueva lista de reproducción</string>
-
     <string name="user">Usuario</string>
-    <string name="user_profile_picture">Foto de perfil de usuario</string>
-    <string name="user_configuration">Configuración del usuario</string>
 
+    <!-- Library -->
+    <string name="your_playlists">Tus listas de reproducción</string>
+    <string name="listen_again">Escuchar otra vez</string>
+
+    <!-- Search -->
     <string name="track">Canción</string>
     <string name="tracks">Canciones</string>
+    <string name="users">Usuarios</string>
+
+    <!-- User -->
+    <string name="user_profile_picture">Foto de perfil de usuario</string>
+    <string name="user_configuration">Configuración del usuario</string>
     <string name="add_track">Añadir canción</string>
 
-    <string name="search_musify_title">Buscar en Musify</string>
-    <string name="users">Usuarios</string>
-    <string name="search_image_content_descriptor">Imagen de un usuario o canción</string>
-
+    <!-- Content Descriptors -->
+    <string name="item_playlist_content_descriptor">Imagen de la lista de reproducción</string>
     <string name="item_track_content_descriptor">Imagen de una canción</string>
+    <string name="search_image_content_descriptor">Imagen de un usuario o canción</string>
 </resources>

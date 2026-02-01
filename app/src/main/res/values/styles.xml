@@ -1,96 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="MusifyEditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxBackgroundMode">filled</item>
-        <item name="boxBackgroundColor">@color/primary</item>
-        <item name="boxStrokeColor">@color/on_primary</item>
-        <item name="android:background">@drawable/corner_radius_8dp</item>
-        <item name="android:textColor">@color/on_primary</item>
-        <item name="android:backgroundTint">@color/primary</item>
-        <item name="android:drawableTint">@color/hint</item>
-        <item name="android:paddingTop">12dp</item>
-        <item name="android:paddingBottom">12dp</item>
-        <item name="android:paddingStart">16dp</item>
-        <item name="android:paddingEnd">16dp</item>
-        <item name="android:textColorHint">@color/hint</item>
-        <item name="android:includeFontPadding">false</item>
+    <!-- TextAppearances -->
+    <style name="TextAppearance.Musify" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textSize">@dimen/text_medium</item>
     </style>
 
-    <style name="MusifyPrimaryButton" parent="Widget.MaterialComponents.Button">
-        <item name="background">@drawable/primary_button_background</item>
-        <item name="android:textColor">@color/on_primary</item>
-        <item name="android:paddingTop">6dp</item>
-        <item name="android:paddingBottom">6dp</item>
-        <item name="android:paddingStart">12dp</item>
-        <item name="android:paddingEnd">12dp</item>
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">50%</item>
-        <item name="android:textAllCaps">false</item>
+    <style name="TextAppearance.Musify.Small" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textSize">@dimen/text_small</item>
     </style>
 
-    <style name="MusifySecondaryButton" parent="Widget.MaterialComponents.Button">
-        <item name="background">@drawable/secondary_button_background</item>
-        <item name="android:textColor">@color/on_secondary</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:paddingStart">32dp</item>
-        <item name="android:paddingEnd">32dp</item>
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">15%</item>
-        <item name="android:textAllCaps">false</item>
+    <style name="TextAppearance.Musify.Large" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textSize">@dimen/text_large</item>
     </style>
 
-    <style name="MusifyTransparentTextButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:textColor">@color/on_surface</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:textAllCaps">false</item>
-    </style>
-
-    <style name="MusifyHeaderText">
-        <item name="android:textSize">32sp</item>
-        <item name="android:textColor">@color/on_surface</item>
+    <style name="TextAppearance.Musify.ExtraLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:textSize">@dimen/text_extra_large</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:includeFontPadding">false</item>
     </style>
 
-    <style name="MusifyBodyText">
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/on_surface</item>
-        <item name="android:includeFontPadding">false</item>
+    <style name="TextAppearance.Musify.Title" parent="TextAppearance.Musify.ExtraLarge">
+        <item name="android:textSize">@dimen/text_title</item>
     </style>
 
-    <style name="MusifySubtleText">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/on_surface</item>
-        <item name="android:includeFontPadding">false</item>
-    </style>
-
-    <style name="MusifySmallText">
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/on_surface</item>
-        <item name="android:includeFontPadding">false</item>
-    </style>
-
-    <style name="MusifyHintText">
-        <item name="android:textColor">@color/hint</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:includeFontPadding">false</item>
-    </style>
-
-    <style name="MusifyBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/MusifyBottomSheet</item>
-    </style>
-
-    <style name="MusifyBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
-        <item name="shapeAppearanceOverlay">@style/MusifyAppearanceBottomSheetDialog</item>
-    </style>
-
-    <style name="MusifyAppearanceBottomSheetDialog" parent="">
+    <!-- Shape Appearances -->
+    <style name="ShapeAppearance.Musify.ImageRounded" parent="ShapeAppearance.Material3.SmallComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopRight">16dp</item>
-        <item name="cornerSizeTopLeft">16dp</item>
-        <item name="cornerSizeBottomRight">0dp</item>
-        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSize">@dimen/radius_medium</item>
+    </style>
+
+    <style name="ShapeAppearance.Musify.ImageRounded.Small" parent="ShapeAppearance.Musify.ImageRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/radius_small</item>
+    </style>
+
+    <style name="ShapeAppearance.Musify.ImageRounded.Large" parent="ShapeAppearance.Musify.ImageRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/radius_large</item>
+    </style>
+
+    <!-- Filled Button -->
+    <style name="Widget.Musify.Button.Filled" parent="Widget.Material3.Button">
+        <item name="android:paddingVertical">@dimen/button_padding_vertical_small</item>
+        <item name="android:paddingHorizontal">@dimen/button_padding_horizontal_small</item>
+        <item name="cornerRadius">@dimen/radius_medium</item>
+    </style>
+
+    <style name="Widget.Musify.Button.Filled.Medium" parent="Widget.Musify.Button.Filled">
+        <item name="android:paddingVertical">@dimen/button_padding_vertical_medium</item>
+        <item name="android:paddingHorizontal">@dimen/button_padding_horizontal_medium</item>
+    </style>
+
+    <style name="Widget.Musify.Button.Filled.Large" parent="Widget.Musify.Button.Filled">
+        <item name="android:paddingVertical">@dimen/button_padding_vertical_large</item>
+        <item name="android:paddingHorizontal">@dimen/button_padding_horizontal_large</item>
+    </style>
+
+    <!-- Outlined Button -->
+    <style name="Widget.Musify.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:paddingVertical">@dimen/button_padding_vertical_small</item>
+        <item name="android:paddingHorizontal">@dimen/button_padding_horizontal_small</item>
+        <item name="cornerRadius">@dimen/radius_medium</item>
+    </style>
+
+    <style name="Widget.Musify.Button.Outlined.Medium" parent="Widget.Musify.Button.Outlined">
+        <item name="android:paddingVertical">@dimen/button_padding_vertical_medium</item>
+        <item name="android:paddingHorizontal">@dimen/button_padding_horizontal_medium</item>
+    </style>
+
+    <style name="Widget.Musify.Button.Outlined.Large" parent="Widget.Musify.Button.Outlined">
+        <item name="android:paddingVertical">@dimen/button_padding_vertical_large</item>
+        <item name="android:paddingHorizontal">@dimen/button_padding_horizontal_large</item>
+    </style>
+
+    <!-- TextInputLayout -->
+    <style name="Widget.Musify.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">@dimen/radius_medium</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_medium</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radius_medium</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius_medium</item>
+    </style>
+
+    <!-- TextInput -->
+    <style name="Widget.Musify.TextInputEditText.Large" parent="Widget.Material3.TextInputEditText.OutlinedBox">
+        <item name="android:paddingVertical">@dimen/button_padding_vertical_large</item>
+        <item name="android:paddingHorizontal">@dimen/button_padding_horizontal_large</item>
+    </style>
+
+    <style name="Widget.Musify.TextInputEditText.Medium" parent="Widget.Material3.TextInputEditText.OutlinedBox">
+        <item name="android:paddingVertical">@dimen/button_padding_vertical_medium</item>
+        <item name="android:paddingHorizontal">@dimen/button_padding_horizontal_medium</item>
+    </style>
+
+    <style name="Widget.Musify.TextInputEditText.Small" parent="Widget.Material3.TextInputEditText.OutlinedBox">
+        <item name="android:paddingVertical">@dimen/button_padding_vertical_small</item>
+        <item name="android:paddingHorizontal">@dimen/button_padding_horizontal_small</item>
+    </style>
+
+    <!-- Chips -->
+    <style name="Widget.Musify.Chip.Filter" parent="Widget.Material3.Chip.Filter">
+        <item name="checkedIconVisible">false</item>
+
+        <item name="chipStartPadding">@dimen/button_padding_horizontal_medium</item>
+        <item name="chipEndPadding">@dimen/button_padding_horizontal_medium</item>
+        <item name="textStartPadding">@dimen/button_padding_horizontal_medium</item>
+        <item name="textEndPadding">@dimen/button_padding_horizontal_medium</item>
+
+        <item name="chipMinHeight">@dimen/chip_height</item>
+
+        <item name="chipCornerRadius">@dimen/radius_medium</item>
     </style>
 </resources>

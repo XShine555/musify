@@ -33,8 +33,9 @@ class SearchResultHolder(
             Glide.with(itemView.context).load(item.imageUrl)
                 .placeholder(R.drawable.playlist_placeholder).circleCrop().into(searchImage)
         } else {
+            val radius = itemView.context.resources.getDimensionPixelSize(R.dimen.radius_large)
             Glide.with(itemView.context).load(item.imageUrl)
-                .placeholder(R.drawable.playlist_placeholder).transform(RoundedCorners(16))
+                .placeholder(R.drawable.playlist_placeholder).transform(RoundedCorners(radius))
                 .into(searchImage)
         }
 

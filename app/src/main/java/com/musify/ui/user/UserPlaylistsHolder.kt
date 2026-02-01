@@ -19,8 +19,9 @@ class UserPlaylistsHolder(
     fun bind(item: PlaylistResult) {
         playlistTitle.text = item.title
 
+        val radius = itemView.context.resources.getDimensionPixelSize(R.dimen.radius_large)
         Glide.with(itemView.context).load(item.imageUrl).centerCrop()
-            .placeholder(R.drawable.playlist_placeholder).transform(RoundedCorners(16))
+            .placeholder(R.drawable.playlist_placeholder).transform(RoundedCorners(radius))
             .into(playlistImage)
 
         itemView.setOnClickListener {

@@ -14,15 +14,14 @@ class PlaylistResultHolder(
     itemView: View, private val onItemClick: (PlaylistResult) -> Unit
 ) : RecyclerView.ViewHolder(itemView) {
     private val playlistTitle: TextView = itemView.findViewById(R.id.playlist_title)
-    private val playlistOwner: TextView = itemView.findViewById(R.id.playlist_owner)
     private val playlistImage: ImageView = itemView.findViewById(R.id.playlist_image)
 
     fun bind(item: PlaylistResult) {
         playlistTitle.text = item.title
-        playlistOwner.text = item.owner
 
+        val radius = itemView.context.resources.getDimensionPixelSize(R.dimen.radius_large)
         Glide.with(itemView.context).load(item.imageUrl).centerCrop()
-            .placeholder(R.drawable.playlist_placeholder).transform(RoundedCorners(16))
+            .placeholder(R.drawable.playlist_placeholder).transform(RoundedCorners(radius))
             .into(playlistImage)
 
         itemView.setOnClickListener {

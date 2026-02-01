@@ -8,14 +8,15 @@
     android:orientation="horizontal"
     android:paddingBottom="10dp">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/search_result_image"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/image_size_small"
+        android:layout_height="@dimen/image_size_small"
         android:contentDescription="@string/search_image_content_descriptor"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Musify.ImageRounded"
         tools:background="@drawable/playlist_placeholder" />
 
     <LinearLayout
@@ -28,18 +29,18 @@
 
         <TextView
             android:id="@+id/search_result_title"
-            style="@style/MusifyBodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:textAppearance="@style/TextAppearance.Musify"
             tools:text="Track Title" />
 
         <TextView
             android:id="@+id/search_result_subtitle"
-            style="@style/MusifySmallText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:textAppearance="@style/TextAppearance.Musify.Small"
             tools:text="Type" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

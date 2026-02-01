@@ -1,13 +1,39 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- Corner Radius -->
+    <dimen name="radius_small">6dp</dimen>
+    <dimen name="radius_medium">8dp</dimen>
+    <dimen name="radius_large">12dp</dimen>
 
-    <dimen name="layout_item_margin_medium">6dp</dimen>
-    <dimen name="layout_item_margin_big">12dp</dimen>
+    <!-- Padding Buttons -->
+    <dimen name="button_padding_vertical_small">12dp</dimen>
+    <dimen name="button_padding_vertical_medium">18dp</dimen>
+    <dimen name="button_padding_vertical_large">22dp</dimen>
 
-    <dimen name="recyclerview_item_gap">6dp</dimen>
+    <dimen name="button_padding_horizontal_small">8dp</dimen>
+    <dimen name="button_padding_horizontal_medium">12dp</dimen>
+    <dimen name="button_padding_horizontal_large">16dp</dimen>
 
-    <dimen name="page_padding">24dp</dimen>
-    <dimen name="bottom_sheet_padding">24dp</dimen>
+    <!-- Chip -->
+    <dimen name="chip_height">36dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="text_small">14sp</dimen>
+    <dimen name="text_medium">16sp</dimen>
+    <dimen name="text_large">24sp</dimen>
+    <dimen name="text_extra_large">32dp</dimen>
+    <dimen name="text_title">48sp</dimen>
+
+    <!-- Margins and Gaps -->
+    <dimen name="item_margin_small">8dp</dimen>
+    <dimen name="item_margin_medium">16dp</dimen>
+    <dimen name="item_margin_large">32dp</dimen>
+    <dimen name="item_margin_extra_large">64dp</dimen>
+
+    <dimen name="screen_padding_horizontal">16dp</dimen>
+    <dimen name="screen_padding_vertical">24dp</dimen>
+
+    <!-- Image Sizes -->
+    <dimen name="image_size_small">76dp</dimen>
+    <dimen name="image_size_medium">96dp</dimen>
+    <dimen name="image_size_large">120dp</dimen>
 </resources>

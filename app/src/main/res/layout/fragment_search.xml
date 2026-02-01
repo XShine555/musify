@@ -4,71 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:padding="@dimen/page_padding">
+    tools:paddingHorizontal="@dimen/screen_padding_horizontal"
+    tools:paddingVertical="@dimen/screen_padding_vertical">
 
-    <TextView
-        android:id="@+id/search_title"
-        style="@style/MusifyHeaderText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/search_musify_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"/>
-
-    <EditText
-        android:id="@+id/search_input"
-        style="@style/MusifyEditText"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/search_input_layout"
+        style="@style/Widget.Musify.TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:autofillHints=""
-        android:drawableStart="@drawable/ic_search"
-        android:drawablePadding="10dp"
         android:hint="@string/search"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_title" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:id="@+id/filter_layout"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/search_input"
+            style="@style/Widget.Musify.TextInputEditText.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Musify" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/tracks_chip"
+        style="@style/Widget.Musify.Chip.Filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_input">
+        android:layout_marginTop="@dimen/item_margin_small"
+        android:checkable="true"
+        android:checked="true"
+        android:text="@string/tracks"
+        android:textAppearance="@style/TextAppearance.Musify.Small"
+        app:layout_constraintStart_toStartOf="@id/search_input_layout"
+        app:layout_constraintTop_toBottomOf="@id/search_input_layout" />
 
-        <CheckBox
-            android:id="@+id/check_box_tracks"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            style="@style/MusifyBodyText"
-            android:text="@string/tracks" />
-
-        <CheckBox
-            android:id="@+id/check_box_user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:checked="true"
-            style="@style/MusifyBodyText"
-            android:text="@string/users" />
-    </LinearLayout>
+    <com.google.android.material.chip.Chip
+        android:id="@+id/users_chip"
+        style="@style/Widget.Musify.Chip.Filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/item_margin_small"
+        android:layout_marginTop="@dimen/item_margin_small"
+        android:checkable="true"
+        android:checked="true"
+        android:text="@string/users"
+        android:textAppearance="@style/TextAppearance.Musify.Small"
+        app:layout_constraintStart_toEndOf="@id/tracks_chip"
+        app:layout_constraintTop_toBottomOf="@id/search_input_layout" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingTop="10dp"
-        android:paddingRight="12dp"
-        android:paddingLeft="12dp"
+        android:layout_marginTop="@dimen/item_margin_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filter_layout" />
+        app:layout_constraintTop_toBottomOf="@id/users_chip"
+        tools:itemCount="6"
+        tools:listitem="@layout/item_search_result" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
