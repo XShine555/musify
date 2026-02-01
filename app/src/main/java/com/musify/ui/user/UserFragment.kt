@@ -67,8 +67,8 @@ class UserFragment : Fragment() {
 
         val userImage = "https://cdn.pfps.gg/pfps/1957-patrick-star-profile-photo.png"
         Glide.with(requireContext()).load(userImage).centerCrop()
-            .placeholder(R.drawable.playlist_placeholder).transform(RoundedCorners(R.dimen.radius_medium))
-            .into(binding.userIcon)
+            .placeholder(R.drawable.ic_person)
+            .transform(RoundedCorners(R.dimen.radius_medium)).into(binding.userIcon)
     }
 
     override fun onDestroyView() {

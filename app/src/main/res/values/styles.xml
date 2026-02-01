@@ -98,7 +98,7 @@
     </style>
 
     <!-- Chips -->
-    <style name="Widget.Musify.Chip.Filter" parent="Widget.Material3.Chip.Filter.Elevated">
+    <style name="Widget.Musify.Chip.Filter" parent="Widget.Material3.Chip.Filter">
         <item name="checkedIconVisible">false</item>
 
         <item name="chipStartPadding">@dimen/button_padding_horizontal_medium</item>

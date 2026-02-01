@@ -38,14 +38,7 @@
         <!-- System UI -->
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowLightNavigationBar">true</item>
-    </style>
-
-    <style name="Theme.Musify.SplashScreen" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/md_surface</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_musify</item>
-        <item name="postSplashScreenTheme">@style/Theme.Musify</item>
-        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
     </style>
 </resources>
