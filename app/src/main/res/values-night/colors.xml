@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Primary -->
-    <color name="md_primary">#1E232C</color>
-    <color name="md_on_primary">#FFFFFF</color>
-    <color name="md_primary_container">#F1F3F6</color>
-    <color name="md_on_primary_container">#1E232C</color>
+    <color name="md_primary">#B0B4BA</color>
+    <color name="md_on_primary">#1E232C</color>
+    <color name="md_primary_container">#2E333D</color>
+    <color name="md_on_primary_container">#E4E7EC</color>
 
     <!-- Secondary -->
-    <color name="md_secondary">#5A6475</color>
-    <color name="md_on_secondary">#FFFFFF</color>
-    <color name="md_secondary_container">#E4E7EC</color>
-    <color name="md_on_secondary_container">#1E232C</color>
+    <color name="md_secondary">#B0B4BA</color>
+    <color name="md_on_secondary">#1E232C</color>
+    <color name="md_secondary_container">#2A2F38</color>
+    <color name="md_on_secondary_container">#E4E7EC</color>
 
     <!-- Background & Surface -->
-    <color name="md_background">#FFFFFF</color>
-    <color name="md_on_background">#1C1C1C</color>
+    <color name="md_background">#1C1C1C</color>
+    <color name="md_on_background">#E4E7EC</color>
 
-    <color name="md_surface">#FAFAFB</color>
-    <color name="md_on_surface">#2A2A2A</color>
-    <color name="md_surface_variant">#F1F3F6</color>
-    <color name="md_on_surface_variant">#5F6368</color>
+    <color name="md_surface">#26282F</color>
+    <color name="md_on_surface">#E4E7EC</color>
+    <color name="md_surface_variant">#2E333D</color>
+    <color name="md_on_surface_variant">#C7CBD1</color>
 
     <!-- Outline / Divider -->
-    <color name="md_outline">#D0D5DD</color>
-    <color name="md_outline_variant">#E4E7EC</color>
+    <color name="md_outline">#5F6368</color>
+    <color name="md_outline_variant">#434A55</color>
 
     <!-- Error -->
-    <color name="md_error">#B3261E</color>
-    <color name="md_on_error">#FFFFFF</color>
-    <color name="md_error_container">#F9DEDC</color>
-    <color name="md_on_error_container">#410E0B</color>
+    <color name="md_error">#F2B8B5</color>
+    <color name="md_on_error">#601410</color>
+    <color name="md_error_container">#8C1D18</color>
+    <color name="md_on_error_container">#F9DEDC</color>
 
     <!-- Hint / Disabled -->
-    <color name="md_hint">#9AA0A6</color>
-    <color name="md_disabled">#C7CBD1</color>
+    <color name="md_hint">#8B9198</color>
+    <color name="md_disabled">#5F6368</color>
 </resources>
