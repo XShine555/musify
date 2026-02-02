@@ -7,14 +7,24 @@
     tools:paddingHorizontal="@dimen/screen_padding_horizontal"
     tools:paddingVertical="@dimen/screen_padding_vertical">
 
+    <TextView
+        android:id="@+id/search_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Musify.Title"
+        android:text="@string/search"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/search_input_layout"
         style="@style/Widget.Musify.TextInputLayout"
+        android:layout_marginTop="@dimen/item_margin_small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/search"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/search_title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/search_input"
