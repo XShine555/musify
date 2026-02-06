@@ -2,16 +2,18 @@ package com.musify.ui.signin
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.musify.R
 import com.musify.databinding.ActivitySignInBinding
 import com.musify.ui.MainActivity
 import com.musify.ui.landing.LandingActivity
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
+
+    private val viewModel: SignInViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,26 +36,28 @@ class SignInActivity : AppCompatActivity() {
             insets
         }
 
+        viewModel.usernameError.observe(this) { errorRes ->
+            binding.usernameInputLayout.error =
+                errorRes?.let { getString(it) }
+        }
+
+        viewModel.passwordError.observe(this) { errorRes ->
+            binding.passwordInputLayout.error =
+                errorRes?.let { getString(it) }
+        }
+
+        viewModel.loginSuccess.observe(this) { success ->
+            if (success) {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
+        }
+
         binding.signInButton.setOnClickListener {
-            val username = binding.usernameInput.text?.toString().orEmpty()
-            val password = binding.passwordInput.text?.toString().orEmpty()
-
-            var anyError = false
-
-            if (username.isEmpty()) {
-                binding.usernameInputLayout.error = getString(R.string.error_username_empty)
-                anyError = true
-            }
-
-            if (password.isEmpty()) {
-                binding.passwordInputLayout.error = getString(R.string.error_password_empty)
-                anyError = true
-            }
-
-            if (anyError) return@setOnClickListener
-
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+            viewModel.signIn(
+                username = binding.usernameInput.text?.toString().orEmpty(),
+                password = binding.passwordInput.text?.toString().orEmpty()
+            )
         }
 
         binding.goBackButton.setOnClickListener {
