@@ -50,4 +50,13 @@
     <string name="item_track_content_descriptor">Imagen de una canción</string>
     <string name="search_image_content_descriptor">Imagen de un usuario o canción</string>
     <string name="library_add_playlist">Añadir una nueva lista de reproducción</string>
+  
+    <!-- Playlist Details -->
+    <string-array name="sort_options">
+        <item>Orden personalizado</item>
+        <item>Título</item>
+        <item>Artista</item>
+        <item>Fecha de añadido</item>
+        <item>Duración</item>
+    </string-array>
 </resources>
