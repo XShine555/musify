@@ -62,6 +62,21 @@ class LibraryFragment : Fragment() {
             recentlyPlayedTracksAdapter.updateList(trackResults)
         }
 
+        viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
+            val errorMessage = errorMessage ?: return@observe
+            Toast.makeText(
+                requireContext(), errorMessage, Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        val sharedPreferences = requireContext().getSharedPreferences("auth_preferences", 0)
+        val accessToken = sharedPreferences.getString("access_token", "") ?: ""
+        viewModel.loadPlaylists(accessToken)
+
+        binding.addPlaylistButton.setOnClickListener {
+            viewModel.addPlaylist(accessToken)
+        }
+
         return binding.root
     }
 

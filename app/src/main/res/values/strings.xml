@@ -21,6 +21,11 @@
     <string name="repeat_password">Repite tu contraseña</string>
     <string name="error_passwords_not_match">Las contraseñas no coinciden</string>
 
+    <!-- Errors -->
+    <string name="error_invalid_credentials_or_username_not_found">Usuario no encontrado o contraseña incorrecta.</string>
+    <string name="error_internal_server_error">Ha ocurrido un error en el servidor.</string>
+    <string name="error_username_already_exists">El nombre de usuario ya existe.</string>
+
     <!-- Navigation -->
     <string name="library">Biblioteca</string>
     <string name="search">Buscar</string>
@@ -44,7 +49,8 @@
     <string name="item_playlist_content_descriptor">Imagen de la lista de reproducción</string>
     <string name="item_track_content_descriptor">Imagen de una canción</string>
     <string name="search_image_content_descriptor">Imagen de un usuario o canción</string>
-
+    <string name="library_add_playlist">Añadir una nueva lista de reproducción</string>
+  
     <!-- Playlist Details -->
     <string-array name="sort_options">
         <item>Orden personalizado</item>
