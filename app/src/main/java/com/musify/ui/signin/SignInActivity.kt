@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.musify.databinding.ActivitySignInBinding
 import com.musify.ui.MainActivity
 import com.musify.ui.landing.LandingActivity
+import androidx.core.content.edit
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
@@ -46,11 +47,14 @@ class SignInActivity : AppCompatActivity() {
                 errorRes?.let { getString(it) }
         }
 
-        viewModel.loginSuccess.observe(this) { success ->
-            if (success) {
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
-            }
+        viewModel.accessToken.observe(this) { accessToken ->
+            if (accessToken.isNullOrEmpty()) return@observe
+
+            val sharedPreferences = getSharedPreferences("auth_preferences", MODE_PRIVATE)
+            sharedPreferences.edit { putString("access_token", accessToken) }
+
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
 
         binding.signInButton.setOnClickListener {
