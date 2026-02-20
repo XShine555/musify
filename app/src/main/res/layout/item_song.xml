@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/song_image"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_music_note" />
+
+    <TextView
+        android:id="@+id/song_title"
+        style="@style/TextAppearance.Musify.Large"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="?attr/colorOnSurface"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btn_more_song"
+        app:layout_constraintStart_toEndOf="@+id/song_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Blinding Lights" />
+
+    <TextView
+        android:id="@+id/song_artist"
+        style="@style/TextAppearance.Musify"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        app:layout_constraintEnd_toStartOf="@+id/btn_more_song"
+        app:layout_constraintStart_toEndOf="@+id/song_image"
+        app:layout_constraintTop_toBottomOf="@+id/song_title"
+        tools:text="The Weeknd" />
+
+    <TextView
+        android:id="@+id/song_duration"
+        style="@style/TextAppearance.Musify.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        app:layout_constraintEnd_toStartOf="@+id/btn_more_song"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="3:20" />
+
+    <ImageButton
+        android:id="@+id/btn_more_song"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="Más opciones"
+        android:src="@drawable/ic_more_vert"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
