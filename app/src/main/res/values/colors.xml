@@ -34,4 +34,7 @@
     <!-- Hint / Disabled -->
     <color name="md_hint">#9AA0A6</color>
     <color name="md_disabled">#C7CBD1</color>
+
+    <!-- Additional -->
+    <color name="black">#000000</color>
 </resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/screen_padding_horizontal"
+    android:paddingVertical="@dimen/screen_padding_vertical">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/playlist_image"
+        android:layout_width="@dimen/image_size_medium"
+        android:layout_height="@dimen/image_size_medium"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toStartOf="@+id/playlist_title_input_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Musify.ImageRounded"
+        tools:src="@drawable/img_playlist_placeholder" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/playlist_title_input_layout"
+        style="@style/Widget.Musify.TextInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/item_margin_medium"
+        android:hint="Playlist Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/playlist_image">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/playlist_title_input"
+            style="@style/Widget.Musify.TextInputEditText.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Musify" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/save_button"
+        style="@style/Widget.Musify.Button.Filled.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/item_margin_medium"
+        android:text="Guardar"
+        android:textAppearance="@style/TextAppearance.Musify"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playlist_image" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

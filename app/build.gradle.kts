@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.android.application)
     id("com.google.devtools.ksp")
     alias(libs.plugins.kotlin.android)
+    id("androidx.navigation.safeargs.kotlin") version "2.9.7"
 }
 
 configure<ApplicationExtension> {
@@ -55,6 +56,9 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.core.splashscreen)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
     ksp(libs.ksp)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

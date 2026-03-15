@@ -8,6 +8,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.musify.databinding.ActivityLandingBinding
+import com.musify.ui.MainActivity
 import com.musify.ui.signin.SignInActivity
 import com.musify.ui.signup.SignUpActivity
 
@@ -38,6 +39,14 @@ class LandingActivity : AppCompatActivity() {
                 originalPaddingBottom + systemBars.bottom
             )
             insets
+        }
+
+        val sharedPreferences = getSharedPreferences("auth_preferences", MODE_PRIVATE)
+        val accessToken = sharedPreferences.getString("access_token", "")
+        if (!accessToken.isNullOrEmpty()) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+            return
         }
 
         binding.signInButton.setOnClickListener {

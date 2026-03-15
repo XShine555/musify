@@ -37,17 +37,15 @@ class SignInActivity : AppCompatActivity() {
         }
 
         viewModel.usernameError.observe(this) { errorRes ->
-            binding.usernameInputLayout.error =
-                errorRes?.let { getString(it) }
+            binding.usernameInputLayout.error = errorRes?.let { getString(it) }
         }
 
         viewModel.passwordError.observe(this) { errorRes ->
-            binding.passwordInputLayout.error =
-                errorRes?.let { getString(it) }
+            binding.passwordInputLayout.error = errorRes?.let { getString(it) }
         }
 
-        viewModel.loginSuccess.observe(this) { success ->
-            if (success) {
+        viewModel.signInResult.observe(this) { result ->
+            if (result) {
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             }

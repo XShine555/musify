@@ -48,8 +48,8 @@ class SignUpActivity : AppCompatActivity() {
             binding.confirmPasswordInputLayout.error = errorRes?.let { getString(it) }
         }
 
-        viewModel.signUpSuccess.observe(this) { success ->
-            if (success) {
+        viewModel.signUpResult.observe(this) { result ->
+            if (result) {
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             }

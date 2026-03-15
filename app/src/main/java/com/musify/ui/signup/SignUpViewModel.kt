@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.musify.R
 
-class SignUpViewModel: ViewModel() {
+class SignUpViewModel : ViewModel() {
     private val _usernameError = MutableLiveData<Int?>()
     val usernameError: LiveData<Int?> = _usernameError
 
@@ -15,10 +15,17 @@ class SignUpViewModel: ViewModel() {
     private val _confirmPasswordError = MutableLiveData<Int?>()
     val confirmPasswordError: LiveData<Int?> = _confirmPasswordError
 
-    private val _signUpSuccess = MutableLiveData<Boolean>()
-    val signUpSuccess: LiveData<Boolean> = _signUpSuccess
+    private val _signUpResult = MutableLiveData<Boolean>()
+    val signUpResult: LiveData<Boolean> = _signUpResult
 
     fun signUp(username: String, password: String, confirmPassword: String) {
+        if (!validateInput(username, password, confirmPassword)) return
+        _signUpResult.value = true
+    }
+
+    private fun validateInput(
+        username: String, password: String, confirmPassword: String
+    ): Boolean {
         var hasError = false
 
         _usernameError.value = null
@@ -43,8 +50,6 @@ class SignUpViewModel: ViewModel() {
             hasError = true
         }
 
-        if (!hasError) {
-            _signUpSuccess.value = true
-        }
+        return !hasError
     }
 }

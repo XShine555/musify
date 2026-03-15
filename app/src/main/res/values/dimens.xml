@@ -36,4 +36,9 @@
     <dimen name="image_size_small">76dp</dimen>
     <dimen name="image_size_medium">96dp</dimen>
     <dimen name="image_size_large">120dp</dimen>
+
+    <!-- Icon Sizes -->
+    <dimen name="icon_size_small">24dp</dimen>
+    <dimen name="icon_size_medium">32dp</dimen>
+    <dimen name="icon_size_large">64dp</dimen>
 </resources>

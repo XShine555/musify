@@ -26,6 +26,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/library_title" />
 
+    <ImageButton
+        android:id="@+id/add_playlist_button"
+        style="@style/Widget.Musify.Button.Outlined"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:contentDescription="@string/library_add_playlist"
+        android:src="@drawable/ic_add"
+        app:layout_constraintBottom_toBottomOf="@id/your_playlists_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/your_playlists_title" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/playlist_list"
         android:layout_width="match_parent"

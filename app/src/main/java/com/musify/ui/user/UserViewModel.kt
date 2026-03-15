@@ -14,14 +14,14 @@ class UserViewModel : ViewModel() {
     private val _tracks = MutableLiveData(TrackDataSource.items)
     val tracks: LiveData<List<UserTrackResult>> = _tracks
 
-    fun addPlaylist(playlistResult: PlaylistResult) {
+    fun addPlaylist(PlaylistResult: PlaylistResult) {
         val currentList = _playlists.value ?: emptyList()
-        _playlists.value = currentList + playlistResult
+        _playlists.value = currentList + PlaylistResult
     }
 
-    fun removePlaylist(playlistResult: PlaylistResult) {
+    fun removePlaylist(PlaylistResult: PlaylistResult) {
         val currentList = _playlists.value ?: emptyList()
-        _playlists.value = currentList - playlistResult
+        _playlists.value = currentList - PlaylistResult
     }
 
     fun addTrack(userTrackResult: UserTrackResult) {
