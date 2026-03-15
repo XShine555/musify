@@ -9,7 +9,7 @@ import com.musify.model.PlaylistResult
 import com.musify.model.RecentlyPlayedTrackResult
 import kotlinx.coroutines.launch
 
-class LibraryViewModel: ViewModel() {
+class LibraryViewModel : ViewModel() {
     private val _playlists = MutableLiveData(emptyList<PlaylistResult>())
     val playlists: LiveData<List<PlaylistResult>> = _playlists
 

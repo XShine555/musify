@@ -4,116 +4,142 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.musify.R
 import com.musify.databinding.FragmentPlaylistDetailsBinding
-import com.musify.model.Track
+import com.musify.model.TrackSortField
+import com.musify.ui.common.VerticalSpaceItemDecoration
 
 class PlaylistDetailsFragment : Fragment() {
 
     private var _binding: FragmentPlaylistDetailsBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var tracksAdapter: PlaylistTracksAdapter
-    private val tracks = mutableListOf<Track>()
+    private val viewModel: PlaylistDetailsViewModel by viewModels()
+
+    private val args: PlaylistDetailsFragmentArgs by navArgs()
+
+    private var trackSortField = TrackSortField.TITLE
+    private var isSortAscending = true
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPlaylistDetailsBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        setupRecyclerView()
-        setupSortSpinner()
-        setupButtons()
-        loadMockData()
-    }
-
-    private fun setupRecyclerView() {
-        tracksAdapter = PlaylistTracksAdapter(tracks)
-        binding.songsRecyclerView.apply {
+        val tracksAdapter = PlaylistTracksAdapter()
+        binding.tracksRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = tracksAdapter
         }
-    }
+        val tacksSpacing =
+            resources.getDimensionPixelSize(R.dimen.item_margin_medium)
+        binding.tracksRecyclerView.addItemDecoration(
+            VerticalSpaceItemDecoration(
+                tacksSpacing
+            )
+        )
+        binding.tracksRecyclerView.adapter = tracksAdapter
 
-    private fun setupSortSpinner() {
-        val sortOptions = resources.getStringArray(R.array.sort_options)
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, sortOptions)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.sortSpinner.adapter = adapter
+        viewModel.playlistDetails.observe(viewLifecycleOwner) { playlistDetails ->
+            val playlistImage = binding.playlistImage
+            val context = requireContext()
+            val radius = context.resources.getDimensionPixelSize(R.dimen.radius_small)
+            Glide.with(context).load(playlistDetails.imageUrl).centerCrop()
+                .placeholder(R.drawable.img_playlist_placeholder).transform(RoundedCorners(radius))
+                .into(playlistImage)
 
-        binding.sortSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                sortTracks(position)
+            binding.playlistTitle.text = playlistDetails.title
+        }
+
+        viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
+            val errorMessage = errorMessage ?: return@observe
+            Toast.makeText(
+                requireContext(), errorMessage, Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        binding.goBackButton.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
+
+        val sharedPreferences = requireContext().getSharedPreferences("auth_preferences", 0)
+        val accessToken = sharedPreferences.getString("access_token", "") ?: ""
+        binding.editButton.setOnClickListener {
+            val fragment = EditPlaylistBottomSheetFragment(
+                {
+                    viewModel.loadPlaylistDetails(args.playlistId, accessToken)
+                })
+            val argsBundle = Bundle()
+            argsBundle.putInt("playlistId", viewModel.playlistDetails.value?.id ?: 0)
+            argsBundle.putString("playlistName", viewModel.playlistDetails.value?.title)
+            argsBundle.putString("playlistImageUrl", viewModel.playlistDetails.value?.imageUrl)
+            fragment.arguments = argsBundle
+            fragment.show(parentFragmentManager, "edit_playlist_sheet")
+        }
+        viewModel.loadPlaylistDetails(args.playlistId, accessToken)
+
+        binding.sortButton.setOnClickListener {
+            val sortSheet = SortTracksBottomSheetFragment { selectedSortField ->
+                if (trackSortField == selectedSortField) {
+                    isSortAscending = !isSortAscending
+                } else {
+                    isSortAscending = true
+                }
+                trackSortField = selectedSortField
+                viewModel.loadTracks(
+                    args.playlistId, accessToken, trackSortField, isSortAscending
+                )
             }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-    }
-
-    private fun setupButtons() {
-        binding.btnPlay.setOnClickListener {
-            // TODO: Implement play functionality
+            val argsBundle = Bundle()
+            argsBundle.putInt("sortField", trackSortField.ordinal)
+            argsBundle.putBoolean("ascending", isSortAscending)
+            sortSheet.arguments = argsBundle
+            sortSheet.show(parentFragmentManager, "sort_tracks_sheet")
         }
 
-        binding.btnShuffle.setOnClickListener {
-            // TODO: Implement shuffle functionality
+        viewModel.tracks.observe(viewLifecycleOwner) { tracks ->
+            tracksAdapter.updateList(tracks)
+            binding.playlistSummary.text =
+                "Creada Por Ti · Contiene ${tracks.size} Canciones."
+        }
+        viewModel.loadTracks(
+            args.playlistId, accessToken, trackSortField, isSortAscending
+        )
+
+        binding.deleteButton.setOnClickListener {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Confirmación")
+                .setMessage("¿Estás seguro de que quieres eliminar la Playlist?")
+                .setPositiveButton("Sí") { dialog, _ ->
+                    viewModel.deletePlaylist(
+                        args.playlistId,
+                        accessToken
+                    )
+                    dialog.dismiss()
+                }
+                .setNegativeButton("No") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
+        }
+        viewModel.deletePlaylistSuccess.observe(viewLifecycleOwner) { isDeleted ->
+            if (isDeleted) {
+                Toast.makeText(
+                    requireContext(), "Playlist eliminada exitosamente", Toast.LENGTH_SHORT
+                ).show()
+                requireActivity().onBackPressedDispatcher.onBackPressed()
+            }
         }
 
-        binding.btnDownload.setOnClickListener {
-            // TODO: Implement download functionality
-        }
-
-        binding.btnShare.setOnClickListener {
-            // TODO: Implement share functionality
-        }
-
-        binding.btnMore.setOnClickListener {
-            // TODO: Implement more options
-        }
-
-        binding.fabAddSong.setOnClickListener {
-            // TODO: Implement add song functionality
-        }
-    }
-
-    private fun loadMockData() {
-        // Mock data for demonstration
-        tracks.addAll(listOf(
-            Track(1, "Blinding Lights", "The Weeknd", "After Hours", "3:20", ""),
-            Track(2, "Watermelon Sugar", "Harry Styles", "Fine Line", "2:54", ""),
-            Track(3, "Levitating", "Dua Lipa", "Future Nostalgia", "3:23", ""),
-            Track(4, "Good 4 U", "Olivia Rodrigo", "SOUR", "2:58", ""),
-            Track(5, "Stay", "The Kid Laroi & Justin Bieber", "F*CK LOVE 3: OVER YOU", "2:21", "")
-        ))
-        tracksAdapter.notifyDataSetChanged()
-        updatePlaylistInfo()
-    }
-
-    private fun updatePlaylistInfo() {
-        binding.playlistName.text = "Mi Playlist Favorita"
-        binding.playlistDescription.text = "Creada por ti • ${tracks.size} canciones"
-    }
-
-    private fun sortTracks(sortType: Int) {
-        when (sortType) {
-            0 -> {} // Custom order (no sort)
-            1 -> tracks.sortBy { it.title } // Title
-            2 -> tracks.sortBy { it.artist } // Artist
-            3 -> {} // Date added (not implemented yet)
-            4 -> {} // Duration (not implemented yet)
-        }
-        tracksAdapter.notifyDataSetChanged()
+        return binding.root
     }
 
     override fun onDestroyView() {

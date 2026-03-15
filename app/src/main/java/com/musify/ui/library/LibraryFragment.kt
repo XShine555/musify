@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.musify.R
 import com.musify.databinding.FragmentLibraryBinding
@@ -24,12 +25,13 @@ class LibraryFragment : Fragment() {
     ): View {
         _binding = FragmentLibraryBinding.inflate(inflater, container, false)
 
-        val playlistAdapter = PlaylistResultAdapter(
-            emptyList(), { item ->
-                Toast.makeText(
-                    requireContext(), "Has clicat: ${item.title}", Toast.LENGTH_SHORT
-                ).show()
-            })
+        val playlistAdapter = PlaylistResultAdapter(emptyList()) { playlist ->
+            val action =
+                LibraryFragmentDirections.actionNavigationPlaylistListToNavigationPlaylistDetails(
+                    playlist.id
+                )
+            findNavController().navigate(action)
+        }
         val playlistSpacing = resources.getDimensionPixelSize(R.dimen.item_margin_medium)
         binding.playlistList.addItemDecoration(HorizontalSpaceItemDecoration(playlistSpacing))
 

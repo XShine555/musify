@@ -1,5 +1,5 @@
 package com.musify.model
 
 data class UserResult(
-    val username: String, val imageUrl: String
+    val id: Int, val username: String, val imageUrl: String
 )

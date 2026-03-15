@@ -6,22 +6,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.musify.databinding.ItemSongBinding
 import com.musify.model.Track
 
-class PlaylistTracksAdapter(
-    private val tracks: List<Track>
-) : RecyclerView.Adapter<PlaylistTracksViewHolder>() {
+class PlaylistTracksAdapter() : RecyclerView.Adapter<PlaylistTracksHolder>() {
+    private var tracks: List<Track> = emptyList()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaylistTracksViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaylistTracksHolder {
         val binding = ItemSongBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
+            LayoutInflater.from(parent.context), parent, false
         )
-        return PlaylistTracksViewHolder(binding)
+        return PlaylistTracksHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: PlaylistTracksViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PlaylistTracksHolder, position: Int) {
         holder.bind(tracks[position])
     }
 
     override fun getItemCount(): Int = tracks.size
+
+    fun updateList(newList: List<Track>) {
+        tracks = newList
+        notifyDataSetChanged()
+    }
 }
