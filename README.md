@@ -23,3 +23,6 @@ Añadidos los ViewBindings y los ViewModels, los ViewModels solo están en los F
 - [UserViewModel](https://github.com/XShine555/musify/blob/master/app/src/main/java/com/musify/ui/user/UserViewModel.kt)
 
 Además he hecho cambios en el diseño para que sea más bonito.
+
+# Entrega 15/03/2026
+Añadidas las llamadas a APIs, ahora puedes crear, editar y borrar tus Playlists, además de añadir canciones de pantalla de Search. Estas canciones las puedes filtrar por distintos filtros que hay en el botón ordenar.
