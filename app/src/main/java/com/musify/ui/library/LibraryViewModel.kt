@@ -1,5 +1,6 @@
 package com.musify.ui.library
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,10 +21,10 @@ class LibraryViewModel : ViewModel() {
 
     val errorMessage: LiveData<String?> = _errorMessage
 
-    fun addPlaylist(accessToken: String) {
+    fun addPlaylist() {
         viewModelScope.launch {
             try {
-                val response = Api.getPlaylistService().addPlaylist("Bearer $accessToken")
+                val response = Api.getPlaylistService().addPlaylist()
                 if (response.isSuccessful) {
                     val currentPlaylists = _playlists.value ?: emptyList()
                     _playlists.value = currentPlaylists + response.body()!!
@@ -32,14 +33,15 @@ class LibraryViewModel : ViewModel() {
                 }
             } catch (e: Exception) {
                 _errorMessage.value = "An error occurred. Please try again."
+                Log.e("LibraryViewModel", "Error adding playlist", e)
             }
         }
     }
 
-    fun loadPlaylists(accessToken: String) {
+    fun loadPlaylists() {
         viewModelScope.launch {
             try {
-                val response = Api.getPlaylistService().getPlaylists("Bearer $accessToken")
+                val response = Api.getPlaylistService().getPlaylists()
                 if (response.isSuccessful) {
                     _playlists.value = response.body()
                 } else {
@@ -47,6 +49,7 @@ class LibraryViewModel : ViewModel() {
                 }
             } catch (e: Exception) {
                 _errorMessage.value = "An error occurred. Please try again."
+                Log.e("LibraryViewModel", "Error loading playlists", e)
             }
         }
     }

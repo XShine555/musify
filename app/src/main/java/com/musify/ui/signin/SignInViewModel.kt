@@ -1,14 +1,9 @@
 package com.musify.ui.signin
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.musify.R
-import com.musify.api.Api
-import com.musify.model.AuthRequest
-import kotlinx.coroutines.launch
 
 class SignInViewModel : ViewModel() {
     private val _usernameError = MutableLiveData<Int?>()
@@ -17,15 +12,12 @@ class SignInViewModel : ViewModel() {
     private val _passwordError = MutableLiveData<Int?>()
     val passwordError: LiveData<Int?> = _passwordError
 
-    private val _accessToken = MutableLiveData<String?>()
-    val accessToken: LiveData<String?> = _accessToken
+    private val _signInResult = MutableLiveData<Boolean>()
+    val signInResult: LiveData<Boolean> = _signInResult
 
     fun signIn(username: String, password: String) {
         if (!validateInput(username, password)) return
-
-        viewModelScope.launch {
-            performSignIn(username, password)
-        }
+        _signInResult.value = true
     }
 
     private fun validateInput(username: String, password: String): Boolean {
@@ -45,30 +37,5 @@ class SignInViewModel : ViewModel() {
         }
 
         return !hasError
-    }
-
-    private suspend fun performSignIn(username: String, password: String) {
-        try {
-            val response = Api.getAuthService().signIn(
-                AuthRequest(username, password)
-            )
-
-            if (!response.isSuccessful) {
-                Log.e("SignInViewModel", "Sign-in failed: ${response.code()} ${response.message()}")
-                _passwordError.value = R.string.error_invalid_credentials_or_username_not_found
-                return
-            }
-            val accessToken = response.body()?.accessToken
-            if (accessToken.isNullOrEmpty()) {
-                Log.e("SignInViewModel", "Sign-in failed: Access token is empty")
-                _passwordError.value = R.string.error_internal_server_error
-                return
-            }
-
-            _accessToken.value = accessToken
-        } catch (e: Exception) {
-            Log.e("SignInViewModel", "Error during sign-in", e)
-            return
-        }
     }
 }

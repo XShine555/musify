@@ -21,7 +21,7 @@ class EditPlaylistBottomSheetViewModel : ViewModel() {
 
     val errorMessage: LiveData<String?> = _errorMessage
 
-    fun updatePlaylist(playlistId: Int, title: String, imageFile: File?, accessToken: String) {
+    fun updatePlaylist(playlistId: Int, title: String, imageFile: File?) {
         viewModelScope.launch {
             try {
                 val titlePart = title.toRequestBody("text/plain".toMediaType())
@@ -31,10 +31,7 @@ class EditPlaylistBottomSheetViewModel : ViewModel() {
                 }
 
                 val response = Api.getPlaylistService().updatePlaylist(
-                    accessToken = "Bearer $accessToken",
-                    playlistId = playlistId,
-                    newTitle = titlePart,
-                    image = imagePart
+                    playlistId = playlistId, newTitle = titlePart, image = imagePart
                 )
 
                 if (!response.isSuccessful) {

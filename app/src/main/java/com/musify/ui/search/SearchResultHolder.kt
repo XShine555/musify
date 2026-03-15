@@ -1,6 +1,7 @@
 package com.musify.ui.search
 
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +19,8 @@ class SearchResultHolder(
     private val searchImage: ImageView = itemView.findViewById(R.id.search_result_image)
     private val searchSubtitle: TextView = itemView.findViewById(R.id.search_result_subtitle)
 
+    private val menuButton: ImageButton = itemView.findViewById(R.id.search_result_menu)
+
     fun bind(item: SearchResult) {
         searchTitle.text = item.title
         searchSubtitle.text = when (item.type) {
@@ -32,6 +35,7 @@ class SearchResultHolder(
         if (item.type == SearchResultType.USER) {
             Glide.with(itemView.context).load(item.imageUrl)
                 .placeholder(R.drawable.img_playlist_placeholder).circleCrop().into(searchImage)
+            menuButton.visibility = View.GONE
         } else {
             val radius = itemView.context.resources.getDimensionPixelSize(R.dimen.radius_large)
             Glide.with(itemView.context).load(item.imageUrl)
@@ -40,7 +44,7 @@ class SearchResultHolder(
         }
 
 
-        itemView.setOnClickListener {
+        menuButton.setOnClickListener {
             onItemClick(item)
         }
     }

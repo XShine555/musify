@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.musify.databinding.ActivitySignUpBinding
@@ -49,14 +48,11 @@ class SignUpActivity : AppCompatActivity() {
             binding.confirmPasswordInputLayout.error = errorRes?.let { getString(it) }
         }
 
-        viewModel.accessToken.observe(this) { accessToken ->
-            if (accessToken.isNullOrEmpty()) return@observe
-
-            val sharedPreferences = getSharedPreferences("auth_preferences", MODE_PRIVATE)
-            sharedPreferences.edit { putString("access_token", accessToken) }
-
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+        viewModel.signUpResult.observe(this) { result ->
+            if (result) {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
         }
 
         binding.signUpButton.setOnClickListener {

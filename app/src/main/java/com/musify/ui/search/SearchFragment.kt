@@ -33,10 +33,28 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.loadPlaylists()
         val adapter = SearchResultAdapter(emptyList(), { item ->
-            Toast.makeText(
-                requireContext(), "Has clicat: ${item.title}", Toast.LENGTH_SHORT
-            ).show()
+            val bottomSheet = AddToPlaylistBottomSheet(
+                playlists = viewModel.playlists.value ?: emptyList(),
+                listener = object : OnAddToPlaylistListener {
+                    override fun onAddToPlaylist(playlistId: Int) {
+
+                        viewModel.addTrackToPlaylist(
+                            trackId = item.id,
+                            playlistId = playlistId
+                        )
+
+                        Toast.makeText(
+                            requireContext(),
+                            "Añadido a playlist",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            )
+
+            bottomSheet.show(parentFragmentManager, "add_to_playlist")
         })
         binding.searchList.adapter = adapter
         binding.searchList.layoutManager = LinearLayoutManager(requireContext())
@@ -52,14 +70,21 @@ class SearchFragment : Fragment() {
             adapter.updateList(searchResults)
         }
 
+        viewModel.errorMessage.observe(viewLifecycleOwner) {
+            val errorMessage = it ?: return@observe
+            Toast.makeText(
+                requireContext(), errorMessage, Toast.LENGTH_SHORT
+            ).show()
+        }
+
         // Actualiza la lista de resultados en función de los filtros activos y el texto de búsqueda.
         fun updateResults() {
             adapter.updateList(
-                SearchDataSource.items.filter { searchResult ->
+                viewModel.searchs.value?.filter { searchResult ->
                     (searchResult.type != SearchResultType.USER || binding.usersChip.isChecked) && (searchResult.type != SearchResultType.TRACK || binding.tracksChip.isChecked) && searchResult.title.contains(
                         binding.searchInput.text.toString(), ignoreCase = true
                     )
-                })
+                } ?: emptyList())
         }
 
         binding.tracksChip.setOnClickListener {
@@ -76,5 +101,7 @@ class SearchFragment : Fragment() {
                 updateResults()
             }
         })
+
+        viewModel.loadAll()
     }
 }

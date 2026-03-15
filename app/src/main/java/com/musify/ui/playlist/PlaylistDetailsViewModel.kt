@@ -1,5 +1,6 @@
 package com.musify.ui.playlist
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,60 +25,93 @@ class PlaylistDetailsViewModel : ViewModel() {
     private val _deletePlaylistSuccess = MutableLiveData<Boolean>()
     val deletePlaylistSuccess: LiveData<Boolean> = _deletePlaylistSuccess
 
-    fun loadPlaylistDetails(playlistId: Int, accessToken: String) {
-        viewModelScope.launch {
-            val result = Api.getPlaylistService().getPlaylistById("Bearer $accessToken", playlistId)
-            if (result.isSuccessful) {
-                val playlistDetails = result.body()
-                if (playlistDetails == null) {
-                    _errorMessage.value = "Playlist details not found."
-                    return@launch
-                }
+    private val _deleteTrackSuccess = MutableLiveData<Boolean>()
+    val deleteTrackSuccess: LiveData<Boolean> = _deleteTrackSuccess
 
-                _playlistDetails.value = playlistDetails
-            } else {
-                _errorMessage.value = "Failed to load playlist details, please try again later."
+    fun loadPlaylistDetails(playlistId: Int) {
+        try {
+            viewModelScope.launch {
+                val result = Api.getPlaylistService().getPlaylistById(playlistId)
+                if (result.isSuccessful) {
+                    val playlistDetails = result.body()
+                    if (playlistDetails == null) {
+                        _errorMessage.value = "Playlist details not found."
+                        return@launch
+                    }
+
+                    _playlistDetails.value = playlistDetails
+                } else {
+                    _errorMessage.value = "Failed to load playlist details, please try again later."
+                }
             }
+        }
+        catch (e: Exception) {
+            _errorMessage.value = "An error occurred. Please try again."
+            Log.e("PlaylistDetails", "Error loading playlist details", e)
         }
     }
 
     fun loadTracks(
-        playlistId: Int,
-        accessToken: String,
-        sortBy: TrackSortField,
-        isAscending: Boolean
+        playlistId: Int, sortBy: TrackSortField, isAscending: Boolean
     ) {
-        viewModelScope.launch {
-            val sortByParam = when (sortBy) {
-                TrackSortField.TITLE -> "title"
-                TrackSortField.ARTIST -> "artist"
-                TrackSortField.DATE_ADDED -> "addedAt"
-                TrackSortField.DURATION -> "duration"
+        try {
+            viewModelScope.launch {
+                val sortByParam = when (sortBy) {
+                    TrackSortField.TITLE -> "title"
+                    TrackSortField.ARTIST -> "artist"
+                    TrackSortField.DATE_ADDED -> "addedAt"
+                    TrackSortField.DURATION -> "duration"
+                }
+
+                val result = Api.getPlaylistService().getTracksInPlaylist(
+                    playlistId, sortByParam, if (isAscending) "asc" else "desc"
+                )
+
+                if (result.isSuccessful) {
+                    val tracks = result.body()
+                    _tracks.value = tracks ?: emptyList()
+                } else {
+                    _errorMessage.value = "Failed to load tracks, please try again later."
+                }
             }
+        }
+        catch (e: Exception) {
+            _errorMessage.value = "An error occurred. Please try again."
+            Log.e("PlaylistDetails", "Error loading tracks", e)
+        }
+    }
 
-            val result = Api.getPlaylistService().getTracksInPlaylist(
-                "Bearer $accessToken",
-                playlistId,
-                sortByParam,
-                if (isAscending) "asc" else "desc"
-            )
-
-            if (result.isSuccessful) {
-                val tracks = result.body()
-                _tracks.value = tracks ?: emptyList()
-            } else {
-                _errorMessage.value = "Failed to load tracks, please try again later."
+    fun deletePlaylist(playlistId: Int) {
+        viewModelScope.launch {
+            try {
+                val result = Api.getPlaylistService().deletePlaylist(playlistId)
+                if (result.isSuccessful) {
+                    _deletePlaylistSuccess.value = true
+                } else {
+                    _errorMessage.value = "Failed to delete playlist, please try again later."
+                }
+            }
+            catch (e: Exception) {
+                _errorMessage.value = "An error occurred. Please try again."
+                Log.e("PlaylistDetails", "Error deleting playlist", e)
             }
         }
     }
 
-    fun deletePlaylist(playlistId: Int, accessToken: String) {
+    fun removeTrackFromPlaylist(playlistId: Int, trackId: Int) {
         viewModelScope.launch {
-            val result = Api.getPlaylistService().deletePlaylist("Bearer $accessToken", playlistId)
-            if (result.isSuccessful) {
-                _deletePlaylistSuccess.value = true
-            } else {
-                _errorMessage.value = "Failed to delete playlist, please try again later."
+            try {
+                val response = Api.getPlaylistService().removeTrackFromPlaylist(playlistId, trackId)
+                if (!response.isSuccessful) {
+                    _errorMessage.value = "Failed to remove track from playlist."
+                    _deleteTrackSuccess.value = false
+                } else {
+                    _deleteTrackSuccess.value = true
+                }
+            } catch (e: Exception) {
+                _deleteTrackSuccess.value = false
+                _errorMessage.value = "An error occurred. Please try again."
+                Log.e("PlaylistDetails", "Error removing track from playlist", e)
             }
         }
     }

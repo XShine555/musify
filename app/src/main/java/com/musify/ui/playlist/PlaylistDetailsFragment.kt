@@ -34,13 +34,25 @@ class PlaylistDetailsFragment : Fragment() {
     ): View {
         _binding = FragmentPlaylistDetailsBinding.inflate(inflater, container, false)
 
-        val tracksAdapter = PlaylistTracksAdapter()
+        val tracksAdapter = PlaylistTracksAdapter { track ->
+            viewModel.removeTrackFromPlaylist(args.playlistId, track.id)
+        }
         binding.tracksRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = tracksAdapter
         }
-        val tacksSpacing =
-            resources.getDimensionPixelSize(R.dimen.item_margin_medium)
+        viewModel.deleteTrackSuccess.observe(viewLifecycleOwner) { isDeleted ->
+            if (isDeleted) {
+                Toast.makeText(
+                    requireContext(), "Playlist eliminada exitosamente", Toast.LENGTH_SHORT
+                ).show()
+                viewModel.loadTracks(
+                    args.playlistId, trackSortField, isSortAscending
+                )
+            }
+        }
+
+        val tacksSpacing = resources.getDimensionPixelSize(R.dimen.item_margin_medium)
         binding.tracksRecyclerView.addItemDecoration(
             VerticalSpaceItemDecoration(
                 tacksSpacing
@@ -70,12 +82,10 @@ class PlaylistDetailsFragment : Fragment() {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
-        val sharedPreferences = requireContext().getSharedPreferences("auth_preferences", 0)
-        val accessToken = sharedPreferences.getString("access_token", "") ?: ""
         binding.editButton.setOnClickListener {
             val fragment = EditPlaylistBottomSheetFragment(
                 {
-                    viewModel.loadPlaylistDetails(args.playlistId, accessToken)
+                    viewModel.loadPlaylistDetails(args.playlistId)
                 })
             val argsBundle = Bundle()
             argsBundle.putInt("playlistId", viewModel.playlistDetails.value?.id ?: 0)
@@ -84,7 +94,7 @@ class PlaylistDetailsFragment : Fragment() {
             fragment.arguments = argsBundle
             fragment.show(parentFragmentManager, "edit_playlist_sheet")
         }
-        viewModel.loadPlaylistDetails(args.playlistId, accessToken)
+        viewModel.loadPlaylistDetails(args.playlistId)
 
         binding.sortButton.setOnClickListener {
             val sortSheet = SortTracksBottomSheetFragment { selectedSortField ->
@@ -95,7 +105,7 @@ class PlaylistDetailsFragment : Fragment() {
                 }
                 trackSortField = selectedSortField
                 viewModel.loadTracks(
-                    args.playlistId, accessToken, trackSortField, isSortAscending
+                    args.playlistId, trackSortField, isSortAscending
                 )
             }
             val argsBundle = Bundle()
@@ -107,28 +117,23 @@ class PlaylistDetailsFragment : Fragment() {
 
         viewModel.tracks.observe(viewLifecycleOwner) { tracks ->
             tracksAdapter.updateList(tracks)
-            binding.playlistSummary.text =
-                "Creada Por Ti · Contiene ${tracks.size} Canciones."
+            binding.playlistSummary.text = "Creada Por Ti · Contiene ${tracks.size} Canciones."
         }
         viewModel.loadTracks(
-            args.playlistId, accessToken, trackSortField, isSortAscending
+            args.playlistId, trackSortField, isSortAscending
         )
 
         binding.deleteButton.setOnClickListener {
-            AlertDialog.Builder(requireContext())
-                .setTitle("Confirmación")
+            AlertDialog.Builder(requireContext()).setTitle("Confirmación")
                 .setMessage("¿Estás seguro de que quieres eliminar la Playlist?")
                 .setPositiveButton("Sí") { dialog, _ ->
                     viewModel.deletePlaylist(
-                        args.playlistId,
-                        accessToken
+                        args.playlistId
                     )
                     dialog.dismiss()
-                }
-                .setNegativeButton("No") { dialog, _ ->
+                }.setNegativeButton("No") { dialog, _ ->
                     dialog.dismiss()
-                }
-                .show()
+                }.show()
         }
         viewModel.deletePlaylistSuccess.observe(viewLifecycleOwner) { isDeleted ->
             if (isDeleted) {

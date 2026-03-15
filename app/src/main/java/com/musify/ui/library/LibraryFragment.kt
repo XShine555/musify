@@ -71,12 +71,10 @@ class LibraryFragment : Fragment() {
             ).show()
         }
 
-        val sharedPreferences = requireContext().getSharedPreferences("auth_preferences", 0)
-        val accessToken = sharedPreferences.getString("access_token", "") ?: ""
-        viewModel.loadPlaylists(accessToken)
+        viewModel.loadPlaylists()
 
         binding.addPlaylistButton.setOnClickListener {
-            viewModel.addPlaylist(accessToken)
+            viewModel.addPlaylist()
         }
 
         return binding.root

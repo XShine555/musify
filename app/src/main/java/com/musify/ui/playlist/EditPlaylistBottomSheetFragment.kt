@@ -76,14 +76,11 @@ class EditPlaylistBottomSheetFragment(
             ).show()
         }
 
-        val sharedPreferences = requireContext().getSharedPreferences("auth_preferences", 0)
-        val accessToken = sharedPreferences.getString("access_token", "") ?: ""
         saveButton.setOnClickListener {
             viewModel.updatePlaylist(
                 playlistId,
                 playlistTitle.text.toString(),
                 selectedImageUri?.let { uriToFile(it, requireContext()) },
-                accessToken
             )
         }
 
