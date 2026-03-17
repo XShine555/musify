@@ -9,22 +9,26 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.musify.R
 import com.musify.databinding.FragmentSearchBinding
 import com.musify.model.SearchResultType
+import com.musify.ui.common.UsageStatsRepository
 import com.musify.ui.common.VerticalSpaceItemDecoration
 
 class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
 
     private val binding get() = _binding!!
-
+    private lateinit var usageStatsRepository: UsageStatsRepository
     private val viewModel: SearchViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+        usageStatsRepository = UsageStatsRepository(requireContext())
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
         return root
@@ -44,7 +48,9 @@ class SearchFragment : Fragment() {
                             trackId = item.id,
                             playlistId = playlistId
                         )
-
+                        lifecycleScope.launch {
+                            usageStatsRepository.incrementTrackAdds()
+                        }
                         Toast.makeText(
                             requireContext(),
                             "Añadido a playlist",

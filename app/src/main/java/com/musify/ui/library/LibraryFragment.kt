@@ -11,7 +11,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.musify.R
 import com.musify.databinding.FragmentLibraryBinding
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import com.musify.ui.common.HorizontalSpaceItemDecoration
+import com.musify.ui.common.UsageStatsRepository
 import com.musify.ui.common.VerticalSpaceItemDecoration
 
 class LibraryFragment : Fragment() {
@@ -19,10 +22,12 @@ class LibraryFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: LibraryViewModel by viewModels()
+    private lateinit var usageStatsRepository: UsageStatsRepository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+        usageStatsRepository = UsageStatsRepository(requireContext())
         _binding = FragmentLibraryBinding.inflate(inflater, container, false)
 
         val playlistAdapter = PlaylistResultAdapter(emptyList()) { playlist ->
@@ -74,6 +79,7 @@ class LibraryFragment : Fragment() {
         viewModel.loadPlaylists()
 
         binding.addPlaylistButton.setOnClickListener {
+            lifecycleScope.launch { usageStatsRepository.incrementTrackAdds() }
             viewModel.addPlaylist()
         }
 

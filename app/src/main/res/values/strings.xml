@@ -53,6 +53,8 @@
     <string name="a_adir_a_playlist">Añadir a playlist</string>
     <string name="mas_opciones">Mas opciones</string>
     <string name="eliminar_de_la_playlist">Eliminar de la playlist</string>
+    <string name="view_statistics">Ver informes</string>
+    <string name="co2_equivalent">kg CO₂ eq</string>
 
     <!-- Playlist Details -->
     <string-array name="sort_options">

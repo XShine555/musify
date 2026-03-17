@@ -25,7 +25,17 @@
         android:id="@+id/navigation_user"
         android:name="com.musify.ui.user.UserFragment"
         android:label="@string/user"
-        tools:layout="@layout/fragment_user" />
+        tools:layout="@layout/fragment_user">
+        <action
+            android:id="@+id/action_navigation_user_to_navigation_statistics"
+            app:destination="@id/navigation_statistics" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_statistics"
+        android:name="com.musify.ui.user.StatisticsFragment"
+        android:label="Estadísticas"
+        tools:layout="@layout/fragment_statistics" />
 
     <fragment
         android:id="@+id/navigation_playlist_details"
