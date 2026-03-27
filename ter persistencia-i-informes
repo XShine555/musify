@@ -1,0 +1,19 @@
+ .vscode/settings.json                              |   3 [32m+[m
+ app/build.gradle.kts                               |   6 [32m++[m
+ app/google-services.json                           |  29 [32m++++++[m
+ app/src/main/java/com/musify/ui/MainActivity.kt    |  19 [32m++++[m
+ .../musify/ui/common/FirebaseStatsRepository.kt    |  53 [32m++++++++++[m
+ .../com/musify/ui/common/UsageStatsRepository.kt   |  71 [32m+++++++++++++[m
+ .../java/com/musify/ui/landing/LandingActivity.kt  |   6 [32m++[m
+ .../java/com/musify/ui/library/LibraryFragment.kt  |   6 [32m++[m
+ .../musify/ui/playlist/PlaylistDetailsFragment.kt  |  11 [32m++[m
+ .../java/com/musify/ui/search/SearchFragment.kt    |  10 [32m+[m[31m-[m
+ .../java/com/musify/ui/user/StatisticsFragment.kt  | 115 [32m+++++++++++++++++++++[m
+ .../main/java/com/musify/ui/user/UserFragment.kt   |   5 [32m+[m
+ app/src/main/res/layout/fragment_statistics.xml    |  59 [32m+++++++++++[m
+ app/src/main/res/layout/fragment_user.xml          |  12 [32m++[m[31m-[m
+ app/src/main/res/navigation/mobile_navigation.xml  |  12 [32m++[m[31m-[m
+ app/src/main/res/values/strings.xml                |   2 [32m+[m
+ build.gradle.kts                                   |   1 [32m+[m
+ settings.gradle.kts                                |   1 [32m+[m
+ 18 files changed, 417 insertions(+), 4 deletions(-)
