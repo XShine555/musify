@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -15,6 +17,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.musify.R
 import com.musify.databinding.FragmentPlaylistDetailsBinding
 import com.musify.model.TrackSortField
+import com.musify.ui.common.UsageStatsRepository
 import com.musify.ui.common.VerticalSpaceItemDecoration
 
 class PlaylistDetailsFragment : Fragment() {
@@ -23,6 +26,7 @@ class PlaylistDetailsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: PlaylistDetailsViewModel by viewModels()
+    private lateinit var usageStatsRepository: UsageStatsRepository
 
     private val args: PlaylistDetailsFragmentArgs by navArgs()
 
@@ -32,9 +36,13 @@ class PlaylistDetailsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+        usageStatsRepository = UsageStatsRepository(requireContext())
         _binding = FragmentPlaylistDetailsBinding.inflate(inflater, container, false)
 
         val tracksAdapter = PlaylistTracksAdapter { track ->
+            lifecycleScope.launch {
+                usageStatsRepository.incrementTrackRemoves()
+            }
             viewModel.removeTrackFromPlaylist(args.playlistId, track.id)
         }
         binding.tracksRecyclerView.apply {
@@ -127,6 +135,9 @@ class PlaylistDetailsFragment : Fragment() {
             AlertDialog.Builder(requireContext()).setTitle("Confirmación")
                 .setMessage("¿Estás seguro de que quieres eliminar la Playlist?")
                 .setPositiveButton("Sí") { dialog, _ ->
+                    lifecycleScope.launch {
+                        usageStatsRepository.incrementTrackRemoves()
+                    }
                     viewModel.deletePlaylist(
                         args.playlistId
                     )

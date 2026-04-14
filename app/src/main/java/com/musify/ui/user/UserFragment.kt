@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -69,6 +70,10 @@ class UserFragment : Fragment() {
         Glide.with(requireContext()).load(userImage).centerCrop()
             .placeholder(R.drawable.ic_person)
             .transform(RoundedCorners(R.dimen.radius_medium)).into(binding.userIcon)
+
+        binding.statsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_user_to_navigation_statistics)
+        }
     }
 
     override fun onDestroyView() {

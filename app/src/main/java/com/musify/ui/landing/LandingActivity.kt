@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.musify.databinding.ActivityLandingBinding
 import com.musify.ui.MainActivity
+import com.musify.ui.common.UsageStatsRepository
 import com.musify.ui.signin.SignInActivity
 import com.musify.ui.signup.SignUpActivity
 
@@ -39,6 +41,10 @@ class LandingActivity : AppCompatActivity() {
                 originalPaddingBottom + systemBars.bottom
             )
             insets
+        }
+
+        lifecycleScope.launchWhenCreated {
+            UsageStatsRepository(this@LandingActivity).incrementAppLaunches()
         }
 
         val sharedPreferences = getSharedPreferences("auth_preferences", MODE_PRIVATE)

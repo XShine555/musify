@@ -26,3 +26,12 @@ Además he hecho cambios en el diseño para que sea más bonito.
 
 # Entrega 15/03/2026
 Añadidas las llamadas a APIs, ahora puedes crear, editar y borrar tus Playlists, además de añadir canciones de pantalla de Search. Estas canciones las puedes filtrar por distintos filtros que hay en el botón ordenar.
+
+# Entrega 29/03/2026
+Implementada persistencia con Firebase/Firestore y añadidos informes de uso:
+- Integración de Firebase en la app.
+- Repositorios `FirebaseStatsRepository` y `UsageStatsRepository`.
+- Nueva pantalla de estadísticas (`StatisticsFragment`).
+- Correcciones y mejoras de UI en `UserFragment`, `LibraryFragment`, `PlaylistDetailsFragment` y `SearchFragment`.
+
+
