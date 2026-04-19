@@ -35,3 +35,8 @@ Implementada persistencia con Firebase/Firestore y añadidos informes de uso:
 - Correcciones y mejoras de UI en `UserFragment`, `LibraryFragment`, `PlaylistDetailsFragment` y `SearchFragment`.
 
 
+# Entrega 19/04/2026
+Añadida la navegación por Voz, ahora el usuario puede activar la navegación por voz en el apartado de Preferencias. Una vez activado aparecerá un botón que permitirá al usuario navegar usando comandos:
+Perfil -> Perfil/Usuario
+Buscar -> Buscar/Busqueda
+Biblioteca -> Biblioteca/Libreria
