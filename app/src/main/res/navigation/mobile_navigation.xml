@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_navigation_user_to_navigation_statistics"
             app:destination="@id/navigation_statistics" />
+        <action
+            android:id="@+id/action_navigation_user_to_navigation_preferences"
+            app:destination="@id/navigation_preferences" />
     </fragment>
 
     <fragment
@@ -46,4 +49,10 @@
             android:name="playlistId"
             app:argType="integer" />
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_preferences"
+        android:name="com.musify.ui.preferences.PreferencesFragment"
+        android:label="Preferencias"
+        tools:layout="@layout/fragment_preferences" />
 </navigation>

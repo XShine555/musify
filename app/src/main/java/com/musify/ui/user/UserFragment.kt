@@ -74,6 +74,10 @@ class UserFragment : Fragment() {
         binding.statsButton.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_user_to_navigation_statistics)
         }
+
+        binding.configButton.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_user_to_navigation_preferences)
+        }
     }
 
     override fun onDestroyView() {
