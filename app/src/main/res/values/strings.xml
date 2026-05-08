@@ -1,13 +1,10 @@
 <resources>
-    <!-- General -->
     <string name="app_name">Musify</string>
     <string name="go_back_button_content_descriptor">Botón para ir hacia atrás.</string>
 
-    <!-- Landing -->
     <string name="welcome_to_musify">¡Bienvenido a Musify!</string>
     <string name="welcome_to_musify_description">Tu música, donde quieras y cuando quieras.</string>
 
-    <!-- Sign In -->
     <string name="login">Iniciar sesión</string>
     <string name="login_welcome_back">¡Nos alegra verte de nuevo!</string>
     <string name="type_your_username">Escribe tu nombre de usuario</string>
@@ -15,37 +12,33 @@
     <string name="error_username_empty">El nombre de usuario no puede estar vacío</string>
     <string name="error_password_empty">La contraseña no puede estar vacía</string>
 
-    <!-- Sign Up -->
     <string name="signup">Registrarse</string>
     <string name="signup_in_musify">¡Hola! Regístrate y empieza a usar la app.</string>
     <string name="repeat_password">Repite tu contraseña</string>
     <string name="error_passwords_not_match">Las contraseñas no coinciden</string>
+    <string name="type_your_email">Escribe tu correo electrónico</string>
+    <string name="error_email_empty">El correo no puede estar vacío</string>
+    <string name="error_email_invalid">El correo no es válido</string>
 
-    <!-- Errors -->
     <string name="error_invalid_credentials_or_username_not_found">Usuario no encontrado o contraseña incorrecta.</string>
     <string name="error_internal_server_error">Ha ocurrido un error en el servidor.</string>
     <string name="error_username_already_exists">El nombre de usuario ya existe.</string>
 
-    <!-- Navigation -->
     <string name="library">Biblioteca</string>
     <string name="search">Buscar</string>
     <string name="user">Usuario</string>
 
-    <!-- Library -->
     <string name="your_playlists">Tus listas de reproducción</string>
     <string name="listen_again">Escuchar otra vez</string>
 
-    <!-- Search -->
     <string name="track">Canción</string>
     <string name="tracks">Canciones</string>
     <string name="users">Usuarios</string>
 
-    <!-- User -->
     <string name="user_profile_picture">Foto de perfil de usuario</string>
     <string name="user_configuration">Configuración del usuario</string>
     <string name="add_track">Añadir canción</string>
 
-    <!-- Content Descriptors -->
     <string name="item_playlist_content_descriptor">Imagen de la lista de reproducción</string>
     <string name="item_track_content_descriptor">Imagen de una canción</string>
     <string name="search_image_content_descriptor">Imagen de un usuario o canción</string>
@@ -56,7 +49,6 @@
     <string name="view_statistics">Ver informes</string>
     <string name="co2_equivalent">kg CO₂ eq</string>
 
-    <!-- Playlist Details -->
     <string-array name="sort_options">
         <item>Orden personalizado</item>
         <item>Título</item>

@@ -71,6 +71,8 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx")
     ksp(libs.ksp)
     testImplementation(libs.junit)
+    testImplementation(libs.androidx.arch.core.testing)
+    testImplementation(libs.robolectric)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

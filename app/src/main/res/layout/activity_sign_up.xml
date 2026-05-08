@@ -48,6 +48,25 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_input_layout"
+        style="@style/Widget.Musify.TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/item_margin_medium"
+        android:hint="@string/type_your_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_input_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_input"
+            style="@style/Widget.Musify.TextInputEditText.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:textAppearance="@style/TextAppearance.Musify" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/password_input_layout"
         style="@style/Widget.Musify.TextInputLayout"
         android:layout_width="match_parent"
@@ -55,13 +74,14 @@
         android:layout_marginTop="@dimen/item_margin_medium"
         android:hint="@string/type_your_password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_input_layout">
+        app:layout_constraintTop_toBottomOf="@+id/email_input_layout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_input"
             style="@style/Widget.Musify.TextInputEditText.Large"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:textAppearance="@style/TextAppearance.Musify" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -80,6 +100,7 @@
             style="@style/Widget.Musify.TextInputEditText.Large"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:textAppearance="@style/TextAppearance.Musify" />
     </com.google.android.material.textfield.TextInputLayout>
 
