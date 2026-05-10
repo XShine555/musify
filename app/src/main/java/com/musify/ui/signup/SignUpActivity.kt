@@ -40,6 +40,10 @@ class SignUpActivity : AppCompatActivity() {
             binding.usernameInputLayout.error = errorRes?.let { getString(it) }
         }
 
+        viewModel.emailError.observe(this) { errorRes ->
+            binding.emailInputLayout.error = errorRes?.let { getString(it) }
+        }
+
         viewModel.passwordError.observe(this) { errorRes ->
             binding.passwordInputLayout.error = errorRes?.let { getString(it) }
         }
@@ -58,6 +62,7 @@ class SignUpActivity : AppCompatActivity() {
         binding.signUpButton.setOnClickListener {
             viewModel.signUp(
                 username = binding.usernameInput.text?.toString().orEmpty(),
+                email = binding.emailInput.text?.toString().orEmpty(),
                 password = binding.passwordInput.text?.toString().orEmpty(),
                 confirmPassword = binding.confirmPasswordInput.text?.toString().orEmpty()
             )
