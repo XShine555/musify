@@ -32,9 +32,27 @@ class SignUpViewModelTest {
     }
 
     @Test
+    fun testEmailEmpty() {
+        viewModel.signUp("user", "", "1234", "1234")
+        assertEquals(R.string.error_email_empty, viewModel.emailError.value)
+    }
+
+    @Test
     fun testEmailInvalid() {
         viewModel.signUp("user", "invalid", "1234", "1234")
         assertEquals(R.string.error_email_invalid, viewModel.emailError.value)
+    }
+
+    @Test
+    fun testPasswordEmpty() {
+        viewModel.signUp("user", "test@test.com", "", "1234")
+        assertEquals(R.string.error_password_empty, viewModel.passwordError.value)
+    }
+
+    @Test
+    fun testConfirmPasswordEmpty() {
+        viewModel.signUp("user", "test@test.com", "1234", "")
+        assertEquals(R.string.error_password_empty, viewModel.confirmPasswordError.value)
     }
 
     @Test

@@ -27,6 +27,17 @@ class SignUpActivityTest {
             .check(matches(hasDescendant(withText(R.string.error_email_empty))))
         onView(withId(R.id.password_input_layout))
             .check(matches(hasDescendant(withText(R.string.error_password_empty))))
+        onView(withId(R.id.confirm_password_input_layout))
+            .check(matches(hasDescendant(withText(R.string.error_password_empty))))
+    }
+
+    @Test
+    fun testInvalidEmailShowsError() {
+        onView(withId(R.id.email_input)).perform(typeText("correo-no-valido"), closeSoftKeyboard())
+        onView(withId(R.id.sign_up_button)).perform(click())
+
+        onView(withId(R.id.email_input_layout))
+            .check(matches(hasDescendant(withText(R.string.error_email_invalid))))
     }
 
     @Test
